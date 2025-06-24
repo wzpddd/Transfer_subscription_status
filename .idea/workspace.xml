@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/http_request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/remove_status/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/remove_status/remove_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="6.24">
+      <change afterPath="$PROJECT_DIR$/123.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/network/http_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/remove_status/remove_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/remove_status/remove_status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +21,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -53,6 +53,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.UI.executor": "Run",
     "Python.remove_status.executor": "Run",
@@ -66,7 +67,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -172,8 +173,17 @@
       <updated>1749708309282</updated>
       <workItem from="1749708310152" duration="1252000" />
       <workItem from="1749709907747" duration="210000" />
-      <workItem from="1750665544460" duration="23218000" />
+      <workItem from="1750665544460" duration="28595000" />
     </task>
+    <task id="LOCAL-00001" summary="6.24">
+      <option name="closed" value="true" />
+      <created>1750753523647</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750753523647</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,10 +191,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="6.24" />
+    <option name="LAST_COMMIT_MESSAGE" value="6.24" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$test.coverage" NAME="test Coverage Results" MODIFIED="1750752983443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$test.coverage" NAME="test Coverage Results" MODIFIED="1750757904136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$UI.coverage" NAME="UI Coverage Results" MODIFIED="1750671589745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$remove_status.coverage" NAME="remove_status Coverage Results" MODIFIED="1750750018717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/remove_status" />
   </component>
