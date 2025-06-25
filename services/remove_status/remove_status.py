@@ -1,6 +1,6 @@
-from config.config import get_api
+'''调用登录获取登录状态'''
 
-#获取环境地址
-base_url = get_api()
 
-print(base_url)
+from network import login
+
+uid = "447fbc23af2a49c19ff470934815fe35"

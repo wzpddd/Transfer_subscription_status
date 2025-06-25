@@ -12,16 +12,18 @@ ENV = os.getenv("APP_ENV", "dev").lower()  # 不区分大小写
 API_ENDPOINTS = {
     "dev": {
         "base_url": "https://test-admin-fomsv2.everimaging.com/",
-        "login": "https://test-admin-fomsv2.everimaging.com/api/admin/login"
+        "login": "https://test-admin-fomsv2.everimaging.com/api/admin/login",
+        "user_info":"https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment"
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",
-        "login": "https://admin-fomsv2.everimaging.com/api/admin/login"
+        "login": "https://admin-fomsv2.everimaging.com/api/admin/login",
+        "user_info":"https://admin-fomsv2.everimaging.com/api/userInfoForPayment"
     }
 }
 
 
-# 获取URL
+# 获取URL，使用时先传url名，再传哪个环境
 def get_api(api: str, env: str = None):  # 必选项写在前面，可选项写在后面
     env = (env or ENV).lower()  # 不传参则使用默认值ENV=dev
     if env not in API_ENDPOINTS:
