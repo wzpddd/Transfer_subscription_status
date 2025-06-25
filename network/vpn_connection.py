@@ -17,8 +17,8 @@ def vpn_connection():
 
 
 
-#实际调用方法请求url，拿到返回体
-def api_request(url, method="GET", **kwargs):
+#调用方法请求url，拿到返回体
+def api_request(url, method="GET",**kwargs):
     """带VPN代理的通用HTTP请求函数"""
     return requests.request(
         method=method,      # 请求方法(GET/POST等)
