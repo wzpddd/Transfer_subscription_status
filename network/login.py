@@ -3,7 +3,7 @@ from config.config import get_api
 import requests
 
 api_url = get_api("login", "dev")
-print(api_url)
+# print(api_url)
 
 payload = {
     "username": "wuzhipeng@everimaging.com",
@@ -18,7 +18,7 @@ def login_session():
     response = session.post(api_url, json=payload)
     if response.status_code == 200:
         # 从返回体头获取 Cookie 值
-        session_cookie = {f"cookie":response.headers["Set-Cookie"]}
-        # print(session_cookie)
+        session_cookie = response.cookies.get_dict()
+        print(session_cookie)
         return session_cookie
 login_session()
