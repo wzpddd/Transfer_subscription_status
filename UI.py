@@ -1,15 +1,21 @@
 import PySimpleGUI as sg
+from services.query.check_account_status import query_order
 
 sg.theme("Black")
+
+
 # 假设的工具函数
 def remove_member(user_id):
     return f"✅ 用户 {user_id} 的会员已被移除"
 
+
 def query_status(user_id):
-    return f"ℹ️ 用户 {user_id} 状态为：正常"
+    return query_order(user_id)
+
 
 def recharge(user_id):
     return f"💰 用户 {user_id} 成功充值 100 元"
+
 
 # 布局
 layout = [
@@ -20,7 +26,6 @@ layout = [
 
 # 创建窗口
 window = sg.Window("🛠 自定义工具集合", layout)
-print(sg.theme_list())
 # 事件循环
 while True:
     event, values = window.read()
@@ -42,7 +47,5 @@ while True:
         result = "❓ 未知操作"
 
     window["result"].update(result + "\n", append=True)
-
-
 
 window.close()
