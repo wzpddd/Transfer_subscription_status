@@ -14,13 +14,15 @@ API_ENDPOINTS = {
         "base_url": "https://test-admin-fomsv2.everimaging.com/",
         "login": "https://test-admin-fomsv2.everimaging.com/api/admin/login",
         "user_info": "https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment",
-        "transfer": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transReading"
+        "transfer": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transReading",
+        "isvip":"https://test-www.fotor.com/pay/service/en/payment/check/isvip"
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",
         "login": "https://admin-fomsv2.everimaging.com/api/admin/login",
         "user_info": "https://admin-fomsv2.everimaging.com/api/userInfoForPayment",
-        "transfer": "https://admin-fomsv2.everimaging.com/api/userInfo/transReading"
+        "transfer": "https://admin-fomsv2.everimaging.com/api/userInfo/transReading",
+        "isvip":"https://www.fotor.com/pay/service/en/payment/check/isvip"
     }
 }
 

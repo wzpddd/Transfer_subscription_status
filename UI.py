@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from services.query.check_account_status import query_order
+from services.query.check_account_status import isvip
 
 sg.theme("Black")
 
@@ -10,7 +10,7 @@ def remove_member(user_id):
 
 
 def query_status(user_id):
-    return query_order(user_id)
+    return isvip(user_id)
 
 
 def recharge(user_id):
@@ -21,7 +21,7 @@ def recharge(user_id):
 layout = [
     [sg.Text("请输入用户 ID:"), sg.InputText(key="user_id")],
     [sg.Button("移除会员"), sg.Button("查询状态"), sg.Button("充值")],
-    [sg.Multiline("", size=(50, 10), key="result", disabled=True)]
+    [sg.Multiline("", size=(100, 50), key="result", disabled=True)]
 ]
 
 # 创建窗口

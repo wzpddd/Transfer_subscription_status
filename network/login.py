@@ -22,5 +22,4 @@ def login_session():
         session_cookie = response.cookies.get_dict()
         # print(session_cookie)
         return session_cookie
-    print(response.text)
 login_session()
