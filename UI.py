@@ -46,6 +46,8 @@ while True:
     else:
         result = "❓ 未知操作"
 
+    if isinstance(result, list):
+        result = "\n".join(str(item) for item in result)
     window["result"].update(result + "\n", append=True)
 
 window.close()

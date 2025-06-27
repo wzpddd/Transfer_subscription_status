@@ -1,31 +1,87 @@
-from http.client import responses
+response  = {
+    "msg": "成功",
+    "data": {
+        "amount": "62.99",
+        "expireTime": "2026-02-10 06:21:18",
+        "expiration": False,
+        "cancelAtPeriodEnd": True,
+        "stripeCancelAtPeriodEnd": None,
+        "nowStatus": "2",
+        "type": "year",
+        "vipStatus": "svip",
+        "fotorSubscriptionId": "d2aae46fb50649f49ab5ff7454cf4c55",
+        "channel": "stripe",
+        "productId": "1eaebcb80c91488d90cf85f29e0387fb",
+        "planId": "61029d5775dc4df0b4d238ca9d168cab",
+        "planInterval": "YEAR",
+        "expiresDateMs": 1770704478000,
+        "startDateMs": 1739168478000,
+        "subscriptionChannel": "web",
+        "platformPlanId": "price_1OwIeRC1v1Cnd1kYYFMYzfkb",
+        "currency": "USD",
+        "canceled": True,
+        "inTrial": False,
+        "nextBillingDateMs": None,
+        "nextBillingSub": None,
+        "nowBillingSub": {
+            "fotorSubscriptionId": "d2aae46fb50649f49ab5ff7454cf4c55",
+            "productId": "1eaebcb80c91488d90cf85f29e0387fb",
+            "planId": "61029d5775dc4df0b4d238ca9d168cab",
+            "status": 2,
+            "canRestoreSubscription": False,
+            "canCancelSubscription": False,
+            "platformType": "stripe",
+            "subscriptionAmount": 8999,
+            "subscriptionAmountYuan": "89.99",
+            "subscriptionCurrency": "USD",
+            "startTime": 0,
+            "subscriptionId": "sub_1QqqMtC1v1Cnd1kYlzyFfL0O",
+            "plan": {
+                "planId": "61029d5775dc4df0b4d238ca9d168cab",
+                "productId": "1eaebcb80c91488d90cf85f29e0387fb",
+                "name": "FotorPlusYear",
+                "interval": "YEAR",
+                "intervalDuration": 1,
+                "type": "subscription",
+                "mode": "period",
+                "creditsQuantity": 600,
+                "creditsEffectiveTimeIntervalDuration": 5,
+                "creditsEffectiveTimeInterval": "MONTH",
+                "amount": 8999,
+                "showName": "Fotor Pro+ Annual Plan"
+            },
+            "product": {
+                "productId": "1eaebcb80c91488d90cf85f29e0387fb",
+                "name": "Pro+",
+                "description": "pro+",
+                "type": "pxbee"
+            }
+        },
+        "latestBilling": {
+            "billingId": "113c03765bc13868b2f430bf867565a4",
+            "payTime": 1739168482000,
+            "platformType": "stripe",
+            "platformBillingId": "in_1QqqMtC1v1Cnd1kYtJq4pu7c",
+            "billingAmount": 6299,
+            "billingAmountYuan": "62.99",
+            "billingCurrency": "usd",
+            "status": "paid",
+            "productId": "1eaebcb80c91488d90cf85f29e0387fb",
+            "planId": "61029d5775dc4df0b4d238ca9d168cab",
+            "billingPayUrl": None
+        },
+        "nextBilling": None,
+        "productType": "pxbee",
+        "planType": "subscription",
+        "planIntervalDuration": 1,
+        "proCode": None,
+        "whetherNewVersionSubscription": False,
+        "environment": "",
+        "stripeOrPaypal": True
+    },
+    "code": "000",
+    "declineCode": "",
+    "status": True
+}
 
-from config.config import get_api
-import requests
-from network import login
-from network.vpn_connection import api_request
-# url = "https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment"
-# params = {
-#     "key":"subscription",
-#     "pageNo": 1,
-#     "pageSize": 10,
-#     "type": "uid",
-#     "value": "447fbc23af2a49c19ff470934815fe35",
-#     "status": 1
-# }
-# headers = {
-#     "Cookie": "fotorAdmin.sid=s%3Ae0lcUheZy886X9-U25-H-4tBZuS47HMi.zh1B7qLD7U8%2FV%2FbmBoQtAQWiS4Hi9s3%2FksJRLNvhuu0"
-# }
-# proxies = {
-#     "http": "http://192.168.1.101:7890",
-#     "https": "http://192.168.1.101:7890"
-# }
-#
-# cookie = {'fotorAdmin.sid': 's%3Av4zRulG8PaIqsBdp4RWojPipEinHwRKT.R1a9LKjFRIpXcBjkMZnc1LETzMJEMAEfcvFmvlO4erc'}
-# respons = requests.get(url,params=params,cookies=cookie)
-# print(respons.json())
-
-# cookie = login.login_session()
-# print(cookie)
-# responses = api_request(url,"get",params=params,cookies=cookie)
-# print(responses.json())
+print(response.get("data",{}).get("amount"))
