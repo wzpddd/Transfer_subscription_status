@@ -1,15 +1,19 @@
-from network.vpn_connection import api_request
+from services.query.query_account_uid import query_account_uid
+from network.vpn_connection import *
 from config.config import get_api
 from utils import get_nested
 from utils import format_timestamp_ms
 
 
 
-def isvip(uid: str):
+def isvip(uid_or_email: str,cookies = None):
+
+    if "@" in uid_or_email:
+        uid_or_email= query_account_uid(uid_or_email,cookies)
     # 获取查询用户的url
     base_url = get_api("isvip", "dev")
     # 拼接参数带入url
-    full_url = f"{base_url}/{uid}"
+    full_url = f"{base_url}/{uid_or_email}"
     response = api_request(full_url, "get").json()
 
     # 返回展示的内容

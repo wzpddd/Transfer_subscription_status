@@ -1,87 +1,12 @@
-response  = {
-    "msg": "成功",
-    "data": {
-        "amount": "62.99",
-        "expireTime": "2026-02-10 06:21:18",
-        "expiration": False,
-        "cancelAtPeriodEnd": True,
-        "stripeCancelAtPeriodEnd": None,
-        "nowStatus": "2",
-        "type": "year",
-        "vipStatus": "svip",
-        "fotorSubscriptionId": "d2aae46fb50649f49ab5ff7454cf4c55",
-        "channel": "stripe",
-        "productId": "1eaebcb80c91488d90cf85f29e0387fb",
-        "planId": "61029d5775dc4df0b4d238ca9d168cab",
-        "planInterval": "YEAR",
-        "expiresDateMs": 1770704478000,
-        "startDateMs": 1739168478000,
-        "subscriptionChannel": "web",
-        "platformPlanId": "price_1OwIeRC1v1Cnd1kYYFMYzfkb",
-        "currency": "USD",
-        "canceled": True,
-        "inTrial": False,
-        "nextBillingDateMs": None,
-        "nextBillingSub": None,
-        "nowBillingSub": {
-            "fotorSubscriptionId": "d2aae46fb50649f49ab5ff7454cf4c55",
-            "productId": "1eaebcb80c91488d90cf85f29e0387fb",
-            "planId": "61029d5775dc4df0b4d238ca9d168cab",
-            "status": 2,
-            "canRestoreSubscription": False,
-            "canCancelSubscription": False,
-            "platformType": "stripe",
-            "subscriptionAmount": 8999,
-            "subscriptionAmountYuan": "89.99",
-            "subscriptionCurrency": "USD",
-            "startTime": 0,
-            "subscriptionId": "sub_1QqqMtC1v1Cnd1kYlzyFfL0O",
-            "plan": {
-                "planId": "61029d5775dc4df0b4d238ca9d168cab",
-                "productId": "1eaebcb80c91488d90cf85f29e0387fb",
-                "name": "FotorPlusYear",
-                "interval": "YEAR",
-                "intervalDuration": 1,
-                "type": "subscription",
-                "mode": "period",
-                "creditsQuantity": 600,
-                "creditsEffectiveTimeIntervalDuration": 5,
-                "creditsEffectiveTimeInterval": "MONTH",
-                "amount": 8999,
-                "showName": "Fotor Pro+ Annual Plan"
-            },
-            "product": {
-                "productId": "1eaebcb80c91488d90cf85f29e0387fb",
-                "name": "Pro+",
-                "description": "pro+",
-                "type": "pxbee"
-            }
-        },
-        "latestBilling": {
-            "billingId": "113c03765bc13868b2f430bf867565a4",
-            "payTime": 1739168482000,
-            "platformType": "stripe",
-            "platformBillingId": "in_1QqqMtC1v1Cnd1kYtJq4pu7c",
-            "billingAmount": 6299,
-            "billingAmountYuan": "62.99",
-            "billingCurrency": "usd",
-            "status": "paid",
-            "productId": "1eaebcb80c91488d90cf85f29e0387fb",
-            "planId": "61029d5775dc4df0b4d238ca9d168cab",
-            "billingPayUrl": None
-        },
-        "nextBilling": None,
-        "productType": "pxbee",
-        "planType": "subscription",
-        "planIntervalDuration": 1,
-        "proCode": None,
-        "whetherNewVersionSubscription": False,
-        "environment": "",
-        "stripeOrPaypal": True
-    },
-    "code": "000",
-    "declineCode": "",
-    "status": True
+from http.client import responses
+
+import requests
+
+url = "https://test-admin-fomsv2.everimaging.com/api/user_info?appleName=&pageNo=1&pageSize=10&type=email&value=wzptestpro01%40fotor.com"
+cookies = {
+    "fotorAdmin.sid":"s%3AorrQWQQl9u5cWYqbOW19a8NNZkf5vHnf.i3IcxUxN0G3vLDOVV4bsngKhIS%2F0L9KLXft0GF%2FXs%2F4; Path=/; Expires=Sun, 29 Jun 2025 17:02:17 GMT; HttpOnly"
 }
 
-print(response.get("data",{}).get("amount"))
+responses = requests.get(url, cookies=cookies).json()
+uid = responses.get('data', [{}])[0].get('uid')
+print(uid)

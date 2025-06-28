@@ -1,4 +1,8 @@
+
 '''字典操作工具，拿到字典中想要的数据'''
+
+#常规写法：
+
 def get_nested(d: dict, *keys) -> any:
     for key in keys:
         if not isinstance(d, dict):

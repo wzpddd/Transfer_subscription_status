@@ -1,5 +1,15 @@
 import PySimpleGUI as sg
-from services.query.check_account_status import isvip
+from services.query.query_account_status import isvip
+from network.login import login_session
+
+
+
+
+try:
+    session_cookie = login_session()  # e.g. {'fotorAdmin.sid': 'xxx'}
+except Exception as e:
+    sg.popup_error("❌ 登录失败", str(e))
+    exit(1)
 
 sg.theme("Black")
 
@@ -10,7 +20,7 @@ def remove_member(user_id):
 
 
 def query_status(user_id):
-    return isvip(user_id)
+    return isvip(user_id,cookies = session_cookie)
 
 
 def recharge(user_id):
@@ -21,7 +31,7 @@ def recharge(user_id):
 layout = [
     [sg.Text("请输入用户 ID:"), sg.InputText(key="user_id")],
     [sg.Button("移除会员"), sg.Button("查询状态"), sg.Button("充值")],
-    [sg.Multiline("", size=(100, 50), key="result", disabled=True)]
+    [sg.Multiline("", size=(60, 30), key="result", disabled=True)]
 ]
 
 # 创建窗口
