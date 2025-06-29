@@ -11,18 +11,25 @@ ENV = os.getenv("APP_ENV", "dev").lower()  # 不区分大小写
 # 设置测试和正式环境地址
 API_ENDPOINTS = {
     "dev": {
+        # 运营后台
         "base_url": "https://test-admin-fomsv2.everimaging.com/",
+        # 登录接口
         "login": "https://test-admin-fomsv2.everimaging.com/api/admin/login",
-        "user_info": "https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment",
+        # 通过邮箱查询UID
+        "user_info": "https://test-admin-fomsv2.everimaging.com/api/user_info",
+        # 转移订阅
         "transfer": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transReading",
-        "isvip":"https://test-www.fotor.com/pay/service/en/payment/check/isvip"
+        # isvip查询
+        "isvip": "https://test-www.fotor.com/pay/service/en/payment/check/isvip",
+        # 账号订阅查询
+        "user_payment": "https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment"
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",
         "login": "https://admin-fomsv2.everimaging.com/api/admin/login",
         "user_info": "https://admin-fomsv2.everimaging.com/api/userInfoForPayment",
         "transfer": "https://admin-fomsv2.everimaging.com/api/userInfo/transReading",
-        "isvip":"https://www.fotor.com/pay/service/en/payment/check/isvip"
+        "isvip": "https://www.fotor.com/pay/service/en/payment/check/isvip"
     }
 }
 

@@ -4,17 +4,31 @@ from config.config import get_api
 from utils import get_nested
 from utils import format_timestamp_ms
 
+'''直接通过isvip接口查询账号状态'''
 
 
-def isvip(uid_or_email: str,cookies = None):
-
+def isvip(uid_or_email: str, cookies=None):
+    # 先判断是否为邮箱，是邮箱就先获取UID
     if "@" in uid_or_email:
-        uid_or_email= query_account_uid(uid_or_email,cookies)
-    # 获取查询用户的url
+        uid = query_account_uid(uid_or_email, cookies)
+        if not uid:
+            return f"❌ 查询失败，该邮箱：{uid_or_email}无效或不存在"
+    else:
+        uid = uid_or_email
+    # 判断UID位数
+    if len(uid) != 32:
+        return f"❌ 查询失败，UID: {uid}无效"
+
+    # 通过isvip获取账号订阅状态
     base_url = get_api("isvip", "dev")
     # 拼接参数带入url
-    full_url = f"{base_url}/{uid_or_email}"
-    response = api_request(full_url, "get").json()
+    full_url = f"{base_url}/{uid}"
+
+    # 查询报错时的异常处理
+    try:
+        response = api_request(full_url, "get",cookies=cookies).json()
+    except Exception:
+        return f"❌ 查询失败，UID: {uid}无效或不存在"
 
     # 返回展示的内容
     result_list = []
@@ -29,8 +43,6 @@ def isvip(uid_or_email: str,cookies = None):
         result_list.append(f"结束时间：{expiresDateMs}")
         result_list.append(f"实际支付：{response['data']['amount']}{response['data']['currency']}")
         # print(result_list)
-
-    return result_list
-
-
-
+        return result_list
+    else:
+        return ("❌ 未查询到当前账号订阅信息")
