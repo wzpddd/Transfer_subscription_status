@@ -18,18 +18,24 @@ API_ENDPOINTS = {
         # 通过邮箱查询UID
         "user_info": "https://test-admin-fomsv2.everimaging.com/api/user_info",
         # 转移订阅
-        "transfer": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transReading",
-        # isvip查询
+        "transfer_subscribe": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transReading",
+        # 会员查询
         "isvip": "https://test-www.fotor.com/pay/service/en/payment/check/isvip",
         # 账号订阅查询
-        "user_payment": "https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment"
+        "user_payment": "https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment",
+        # 转移积分
+        "transfer_credits": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transferCredit",
+        # 积分查询
+        "get_score": "https://test-www.fotor.com/api/create/test/score/fotor"
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",
         "login": "https://admin-fomsv2.everimaging.com/api/admin/login",
         "user_info": "https://admin-fomsv2.everimaging.com/api/userInfoForPayment",
-        "transfer": "https://admin-fomsv2.everimaging.com/api/userInfo/transReading",
-        "isvip": "https://www.fotor.com/pay/service/en/payment/check/isvip"
+        "transfer_subscribe": "https://admin-fomsv2.everimaging.com/api/userInfo/transReading",
+        "isvip": "https://www.fotor.com/pay/service/en/payment/check/isvip",
+        # 积分查询
+        "get_score": "https://www.fotor.com/api/create/test/score/fotor"
     }
 }
 

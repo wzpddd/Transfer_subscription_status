@@ -30,7 +30,7 @@ def api_request(url, method="GET",**kwargs):
     return requests.request(
         method=method,      # 请求方法(GET/POST等)
         url=url,            # 目标URL
-        # proxies=vpn_connection(), # 自动注入VPN代理配置
+        proxies=vpn_connection(), # 自动注入VPN代理配置
         timeout=kwargs.pop('timeout', 10),  # 默认10秒超时
         **kwargs            # 其他requests参数(headers/data等)
     )

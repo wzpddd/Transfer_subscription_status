@@ -61,7 +61,7 @@ def remove_status(user_id, cookies=None):
 
     # 设置默认转移账号,一般不会更改
         target_account = "447fbc23af2a49c19ff470934815fe35"
-        tansfer_url = get_api("transfer", "dev")
+        tansfer_url = get_api("transfer_subscribe", "dev")
         headers = {
             "x-app-id" : "app-fotor-web"
         }

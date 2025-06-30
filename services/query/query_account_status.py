@@ -22,11 +22,11 @@ def isvip(uid_or_email: str, cookies=None):
     # 通过isvip获取账号订阅状态
     base_url = get_api("isvip", "dev")
     # 拼接参数带入url
-    full_url = f"{base_url}/{uid}"
+    full_api = f"{base_url}/{uid}"
 
     # 查询报错时的异常处理
     try:
-        response = api_request(full_url, "get",cookies=cookies).json()
+        response = api_request(full_api, "get",cookies=cookies).json()
     except Exception:
         return f"❌ 查询失败，UID: {uid}无效或不存在"
 
