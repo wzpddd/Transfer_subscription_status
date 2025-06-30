@@ -8,6 +8,9 @@ load_dotenv()
 # 设置当前默认环境地址，APP_ENV为系统环境，pord为默认值
 ENV = os.getenv("APP_ENV", "dev").lower()  # 不区分大小写
 
+# 默认接收的UID,"wzptestuser30@fotor.com"
+target_account = "6dd0933c2a774c52a435eabdb53966bd"
+
 # 设置测试和正式环境地址
 API_ENDPOINTS = {
     "dev": {
@@ -27,6 +30,7 @@ API_ENDPOINTS = {
         "transfer_credits": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transferCredit",
         # 积分查询
         "get_score": "https://test-www.fotor.com/api/create/test/score/fotor"
+
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",

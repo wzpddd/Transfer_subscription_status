@@ -5,14 +5,27 @@ from network.vpn_connection import api_request
 from services.query import query_account_uid
 from utils import format_timestamp_ms
 from utils import validate_input
+from config import target_account
+
 
 '''订阅列表还是通过UID查询的，所以先调用接口查询UID'''
 
 
 # 获取账号的订阅列表
-def remove_status(user_id, cookies=None):
-    # 先进行账号是否合法判断
-    uid = validate_input(user_id, cookies)
+def remove_status(uid_or_email, cookies=None):
+    #先对输入账号进行合法判断，邮箱则返回uid
+    uid = validate_input(uid_or_email, cookies=cookies)
+    if "@" in uid_or_email:
+        uid = query_account_uid(uid_or_email, cookies)
+        if not uid:
+            return f"❌ 查询失败，该邮箱：{uid_or_email}无效或不存在"
+    else:
+        uid = uid_or_email
+    # 判断UID位数
+    if len(uid) != 32:
+        return f"❌ 查询失败，UID: {uid}无效"
+
+
     if uid == "invalid":
         return "输入有误，请重新输入"
 
@@ -60,7 +73,6 @@ def remove_status(user_id, cookies=None):
             result.append(f"🆔 套餐ID：{_id}\n📅 创建时间：{dt}\n📝 订阅类型：{_desc}\n" + "-" * 50)
 
     # 设置默认转移账号,一般不会更改
-        target_account = "447fbc23af2a49c19ff470934815fe35"
         tansfer_url = get_api("transfer_subscribe", "dev")
         headers = {
             "x-app-id" : "app-fotor-web"

@@ -10,7 +10,7 @@ from utils import format_timestamp_ms
 def isvip(uid_or_email: str, cookies=None):
     # 先判断是否为邮箱，是邮箱就先获取UID
     if "@" in uid_or_email:
-        uid = query_account_uid(uid_or_email, cookies)
+        uid = query_account_uid(uid_or_email, cookies=cookies)
         if not uid:
             return f"❌ 查询失败，该邮箱：{uid_or_email}无效或不存在"
     else:

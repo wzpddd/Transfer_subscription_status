@@ -2,6 +2,8 @@ import PySimpleGUI as sg
 from services.query.query_account_status import isvip
 from network.login import login_session
 from services.remove_status.remove_vip import remove_status
+from services.query.query_account_credits import query_account_credits
+from services.remove_status import remove_credits, remove_account_credits
 import json
 import threading
 
@@ -19,7 +21,7 @@ except Exception as e:
 sg.theme("Black")
 
 
-# 假设的工具函数
+#调用的工具函数
 def remove_vip(user_id):
     return remove_status(user_id, cookies=session_cookie)
 
@@ -27,27 +29,32 @@ def remove_vip(user_id):
 def query_status(user_id):
     return isvip(user_id, cookies=session_cookie)
 
+def remove_credits(user_id):
+    return remove_account_credits(user_id, cookies=session_cookie)
 
-def recharge(user_id):
-    return f"💰 用户 {user_id} 成功充值 100 元"
+def query_credits(user_id):
+    return query_account_credits(user_id,cookies=session_cookie)
 
 def threaded_task(action, user_id, window):
-    if action == "remove":
+    if action == "remove_vip":
         result = remove_vip(user_id)
-        window.write_event_value("-REMOVE_DONE-", result)
-    elif action == "query":
+        window.write_event_value("-REMOVE_VIP_DONE-", result)
+    elif action == "query_vip":
         result = query_status(user_id)
-        window.write_event_value("-QUERY_DONE-", result)
-    elif action == "recharge":
-        result = recharge(user_id)
-        window.write_event_value("-RECHARGE_DONE-", result)
+        window.write_event_value("-QUERY_VIP_DONE-", result)
+    elif action == "remove_credits":
+        result = remove_credits(user_id)
+        window.write_event_value("-REMOVE_CREDITS_DONE-", result)
+    elif action == "query_credits":
+        result = query_credits(user_id)
+        window.write_event_value("-QUERY_CREDITS_DONE-", result)
 
 # 布局
 layout = [
     [sg.Text("请输入用户 ID:"), sg.InputText(key="user_id")],
     [sg.Text("默认转移账号为："),sg.Input(default_text="wzptestuser30@fotor.com", disabled=True, key="fixed_uid", size=(40, 1),
               text_color='grey')],
-    [sg.Button("移除订阅"), sg.Button("查询会员"), sg.Button("充值")],
+    [sg.Button("移除订阅"), sg.Button("查询会员"), sg.Button("移除积分"),sg.Button("查询积分")],
     [sg.Multiline("", size=(60, 30), key="result", disabled=True)]
 ]
 
@@ -66,15 +73,18 @@ while True:
         continue
 
     if event == "移除订阅":
-        window["result"].update("⏳ 正在移除订阅，请稍候...\n")
-        threading.Thread(target=threaded_task, args=("remove", user_id, window), daemon=True).start()
+        window["result"].update("⏳ 正在移除订阅...\n")
+        threading.Thread(target=threaded_task, args=("remove_vip", user_id, window), daemon=True).start()
     elif event == "查询会员":
         window["result"].update("⏳ 正在查询会员信息...\n")
-        threading.Thread(target=threaded_task, args=("query", user_id, window), daemon=True).start()
-    elif event == "充值":
-        window["result"].update("⏳ 正在充值...\n")
-        threading.Thread(target=threaded_task, args=("recharge", user_id, window), daemon=True).start()
-    elif event in ("-REMOVE_DONE-", "-QUERY_DONE-", "-RECHARGE_DONE-"):
+        threading.Thread(target=threaded_task, args=("query_vip", user_id, window), daemon=True).start()
+    elif event == "移除积分":
+        window["result"].update("⏳ 正在移除积分...\n")
+        threading.Thread(target=threaded_task, args=("remove_credits", user_id, window), daemon=True).start()
+    elif event == "查询积分":
+        window["result"].update("⏳ 正在查询积分...\n")
+        threading.Thread(target=threaded_task, args=("query_credits", user_id, window), daemon=True).start()
+    elif event in ("-REMOVE_VIP_DONE-", "-QUERY_VIP_DONE-", "-QUERY_CREDITS_DONE-","-REMOVE_CREDITS_DONE-"):
         result = values[event]
 
         def format_result(result):
