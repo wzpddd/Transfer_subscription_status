@@ -19,6 +19,9 @@ except Exception as e:
     exit(1)
 
 sg.theme("Black")
+#弹窗确认，不传值时使用预设文案，当选择yes返回true
+def confirm_action(message="你确定要继续吗？"):
+    return sg.popup_yes_no(message) == "Yes"
 
 
 #调用的工具函数
@@ -73,14 +76,18 @@ while True:
         continue
 
     if event == "移除订阅":
-        window["result"].update("⏳ 正在移除订阅...\n")
-        threading.Thread(target=threaded_task, args=("remove_vip", user_id, window), daemon=True).start()
+        if confirm_action("确认移除订阅吗？"):
+            # 返回为true时执行
+            window["result"].update("⏳ 正在移除订阅...\n")
+            threading.Thread(target=threaded_task, args=("remove_vip", user_id, window), daemon=True).start()
+
     elif event == "查询会员":
         window["result"].update("⏳ 正在查询会员信息...\n")
         threading.Thread(target=threaded_task, args=("query_vip", user_id, window), daemon=True).start()
     elif event == "移除积分":
-        window["result"].update("⏳ 正在移除积分...\n")
-        threading.Thread(target=threaded_task, args=("remove_credits", user_id, window), daemon=True).start()
+        if confirm_action("确认移除积分吗？"):
+            window["result"].update("⏳ 正在移除积分...\n")
+            threading.Thread(target=threaded_task, args=("remove_credits", user_id, window), daemon=True).start()
     elif event == "查询积分":
         window["result"].update("⏳ 正在查询积分...\n")
         threading.Thread(target=threaded_task, args=("query_credits", user_id, window), daemon=True).start()
