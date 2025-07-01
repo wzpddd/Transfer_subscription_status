@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="6.29.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/query/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/query/query_account_credits.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/query/query_account_credits.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/query/query_account_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/query/query_account_status.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/remove_status/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/remove_status/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/remove_status/remove_credits.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/remove_status/remove_credits.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/remove_status/remove_vip.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/remove_status/remove_vip.py" afterDir="false" />
     </list>
@@ -66,34 +61,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.UI.executor": "Run",
-    "Python.check_account_status (1).executor": "Run",
-    "Python.http_request.executor": "Run",
-    "Python.login (1).executor": "Run",
-    "Python.query_account_credits.executor": "Run",
-    "Python.query_account_uid.executor": "Run",
-    "Python.query_uid.executor": "Run",
-    "Python.remove_status.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.vpn_connection.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/WZP/Desktop/Transfer_subscription_status",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.UI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.check_account_status (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.http_request.executor&quot;: &quot;Run&quot;,
+    &quot;Python.login (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.query_account_credits.executor&quot;: &quot;Run&quot;,
+    &quot;Python.query_account_uid.executor&quot;: &quot;Run&quot;,
+    &quot;Python.query_uid.executor&quot;: &quot;Run&quot;,
+    &quot;Python.remove_status.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vpn_connection.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/WZP/Desktop/Transfer_subscription_status&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wzp\PycharmProjects\Transfer_subscription_status\services\query" />
@@ -251,6 +246,7 @@
       <workItem from="1750855036093" duration="12658000" />
       <workItem from="1751119995022" duration="12271000" />
       <workItem from="1751166642557" duration="38051000" />
+      <workItem from="1751332302812" duration="5356000" />
     </task>
     <task id="LOCAL-00001" summary="6.24">
       <option name="closed" value="true" />
@@ -306,27 +302,16 @@
     <MESSAGE value="6.29.1" />
     <option name="LAST_COMMIT_MESSAGE" value="6.29.1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/services/remove_status/remove_credits.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$UI.coverage" NAME="UI Coverage Results" MODIFIED="1751300225194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$vpn_connection.coverage" NAME="vpn_connection Coverage Results" MODIFIED="1750831107384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$http_request.coverage" NAME="http_request Coverage Results" MODIFIED="1750838749930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_account_uid.coverage" NAME="query_account_uid Coverage Results" MODIFIED="1751180633597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_account_credits.coverage" NAME="query_account_credits Coverage Results" MODIFIED="1751299351749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$test.coverage" NAME="test Coverage Results" MODIFIED="1751179649077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$login__1_.coverage" NAME="login (1) Coverage Results" MODIFIED="1750903327364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_uid.coverage" NAME="query_uid Coverage Results" MODIFIED="1750916800885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$remove_status.coverage" NAME="remove_status Coverage Results" MODIFIED="1751193935651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/remove_status" />
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$check_account_status__1_.coverage" NAME="check_account_status (1) Coverage Results" MODIFIED="1751015730129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$vpn_connection.coverage" NAME="vpn_connection Coverage Results" MODIFIED="1750831107384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_uid.coverage" NAME="query_uid Coverage Results" MODIFIED="1750916800885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$test.coverage" NAME="test Coverage Results" MODIFIED="1751179649077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_account_uid.coverage" NAME="query_account_uid Coverage Results" MODIFIED="1751180633597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$http_request.coverage" NAME="http_request Coverage Results" MODIFIED="1750838749930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$remove_status.coverage" NAME="remove_status Coverage Results" MODIFIED="1751193935651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/remove_status" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$UI.coverage" NAME="UI Coverage Results" MODIFIED="1751337151031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_account_credits.coverage" NAME="query_account_credits Coverage Results" MODIFIED="1751299351749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
   </component>
 </project>

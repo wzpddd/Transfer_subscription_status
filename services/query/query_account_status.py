@@ -16,7 +16,7 @@ def isvip(uid_or_email: str, cookies=None):
     else:
         uid = uid_or_email
     # 判断UID位数
-    if len(uid) != 32:
+    if len(uid) not in (32, 33):
         return f"❌ 查询失败，UID: {uid}无效"
 
     # 通过isvip获取账号订阅状态
@@ -26,7 +26,7 @@ def isvip(uid_or_email: str, cookies=None):
 
     # 查询报错时的异常处理
     try:
-        response = api_request(full_api, "get",cookies=cookies).json()
+        response = api_request(full_api, "get", cookies=cookies).json()
     except Exception:
         return f"❌ 查询失败，UID: {uid}无效或不存在"
 

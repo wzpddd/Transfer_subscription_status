@@ -22,7 +22,7 @@ def remove_status(uid_or_email, cookies=None):
     else:
         uid = uid_or_email
     # 判断UID位数
-    if len(uid) != 32:
+    if len(uid) not in (32, 33):
         return f"❌ 查询失败，UID: {uid}无效"
 
 
