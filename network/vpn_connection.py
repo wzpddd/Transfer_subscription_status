@@ -3,7 +3,7 @@ import requests
 
 #添加VPN配置，和网页中的插件配置以相同，无需用户名密码
 VPN_config = {
-    "vpn_host": "192.168.86.101",
+    "vpn_host": "192.168.1.102",
     "vpn_port": 7890,
     # "username": "user",  公司vpn中未设置链接账号和密码
     # "password": "pass"
