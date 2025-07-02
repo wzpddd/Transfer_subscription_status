@@ -57,7 +57,7 @@ layout = [
     [sg.Text("请输入用户 ID:"), sg.InputText(key="user_id")],
     [sg.Text("默认转移账号为："),sg.Input(default_text="wzptestuser30@fotor.com", disabled=True, key="fixed_uid", size=(40, 1),
               text_color='grey')],
-    [sg.Button("移除订阅"), sg.Button("查询会员"), sg.Button("移除积分"),sg.Button("查询积分")],
+    [sg.Button("移除订阅"),  sg.Button("移除积分"),sg.Button("查询会员"),sg.Button("查询积分")],
     [sg.Multiline("", size=(60, 30), key="result", disabled=True)]
 ]
 

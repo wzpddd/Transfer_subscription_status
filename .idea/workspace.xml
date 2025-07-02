@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="7.1_v1.2">
+    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="7.1_v1.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
     </list>
@@ -37,12 +37,12 @@
     &quot;assignee&quot;: &quot;wzpddd&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/wzpddd/Transfer_subscription_status.git&quot;,
-    &quot;accountId&quot;: &quot;c53e3451-da42-400b-9fea-2ff480161a71&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:wzpddd/Transfer_subscription_status.git",
+    "accountId": "c53e3451-da42-400b-9fea-2ff480161a71"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Programs/Python/Python38/Lib/site-packages/requests/adapters.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/services/query/check_account_status.py" root0="FORCE_HIGHLIGHTING" />
@@ -58,34 +58,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.UI.executor&quot;: &quot;Run&quot;,
-    &quot;Python.check_account_status (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.http_request.executor&quot;: &quot;Run&quot;,
-    &quot;Python.login (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.query_account_credits.executor&quot;: &quot;Run&quot;,
-    &quot;Python.query_account_uid.executor&quot;: &quot;Run&quot;,
-    &quot;Python.query_uid.executor&quot;: &quot;Run&quot;,
-    &quot;Python.remove_status.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.vpn_connection.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/WZP/Desktop/Transfer_subscription_status&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.UI.executor": "Run",
+    "Python.check_account_status (1).executor": "Run",
+    "Python.http_request.executor": "Run",
+    "Python.login (1).executor": "Run",
+    "Python.query_account_credits.executor": "Run",
+    "Python.query_account_uid.executor": "Run",
+    "Python.query_uid.executor": "Run",
+    "Python.remove_status.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.vpn_connection.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/WZP/Desktop/Transfer_subscription_status",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wzp\PycharmProjects\Transfer_subscription_status\services\query" />
@@ -246,7 +246,9 @@
       <workItem from="1751332302812" duration="5356000" />
       <workItem from="1751338558950" duration="440000" />
       <workItem from="1751339359377" duration="3471000" />
-      <workItem from="1751359316949" duration="2960000" />
+      <workItem from="1751359316949" duration="3598000" />
+      <workItem from="1751365664264" duration="2356000" />
+      <workItem from="1751421492829" duration="1986000" />
     </task>
     <task id="LOCAL-00001" summary="6.24">
       <option name="closed" value="true" />
@@ -304,11 +306,94 @@
       <option name="project" value="LOCAL" />
       <updated>1751339413759</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="7.1_v1.2">
+      <option name="closed" value="true" />
+      <created>1751365186792</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365186792</updated>
+    </task>
+    <task id="LOCAL-00009" summary="7.1_v1.2">
+      <option name="closed" value="true" />
+      <created>1751365213896</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365213896</updated>
+    </task>
+    <task id="LOCAL-00010" summary="7.1_v1.3">
+      <option name="closed" value="true" />
+      <created>1751365222517</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365222517</updated>
+    </task>
+    <task id="LOCAL-00011" summary="7.1_v1.3">
+      <option name="closed" value="true" />
+      <created>1751365412487</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365412487</updated>
+    </task>
+    <task id="LOCAL-00012" summary="7.1_v1.3">
+      <option name="closed" value="true" />
+      <created>1751365458646</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365458646</updated>
+    </task>
+    <task id="LOCAL-00013" summary="7.1_v1.3">
+      <option name="closed" value="true" />
+      <created>1751365682644</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365682644</updated>
+    </task>
+    <task id="LOCAL-00014" summary="7.1_v1.3">
+      <option name="closed" value="true" />
+      <created>1751365755245</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365755245</updated>
+    </task>
+    <task id="LOCAL-00015" summary="7.1_v1.3">
+      <option name="closed" value="true" />
+      <created>1751365864915</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1751365864915</updated>
+    </task>
+    <task id="LOCAL-00016" summary="7.1_v1.3">
+      <option name="closed" value="true" />
+      <created>1751366392471</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1751366392471</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
@@ -317,7 +402,8 @@
     <MESSAGE value="6.25.4" />
     <MESSAGE value="6.29.1" />
     <MESSAGE value="7.1_v1.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="7.1_v1.2" />
+    <MESSAGE value="7.1_v1.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="7.1_v1.3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$login__1_.coverage" NAME="login (1) Coverage Results" MODIFIED="1750903327364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
@@ -328,7 +414,7 @@
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_account_uid.coverage" NAME="query_account_uid Coverage Results" MODIFIED="1751180633597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$http_request.coverage" NAME="http_request Coverage Results" MODIFIED="1750838749930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$remove_status.coverage" NAME="remove_status Coverage Results" MODIFIED="1751193935651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/remove_status" />
-    <SUITE FILE_PATH="coverage/Transfer_subscription_status$UI.coverage" NAME="UI Coverage Results" MODIFIED="1751364699893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Transfer_subscription_status$UI.coverage" NAME="UI Coverage Results" MODIFIED="1751365057704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$query_account_credits.coverage" NAME="query_account_credits Coverage Results" MODIFIED="1751299351749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
   </component>
 </project>
