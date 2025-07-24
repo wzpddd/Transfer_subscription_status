@@ -29,8 +29,11 @@ API_ENDPOINTS = {
         # 转移积分
         "transfer_credits": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transferCredit",
         # 积分查询
-        "get_score": "https://test-www.fotor.com/api/create/test/score/fotor"
-
+        "get_score": "https://test-www.fotor.com/api/create/test/score/fotor",
+        # 查询兑换码个数
+        "getCodeUseInfo":'https://test-admin-fomsv2.everimaging.com/api/activity/getCodeUseInfo',
+        # 获取兑换码列表
+        "getActivityCodeUseList":"https://test-admin-fomsv2.everimaging.com/api/activity/getActivityCodeUseList"
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",

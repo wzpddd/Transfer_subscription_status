@@ -1,3 +1,5 @@
+from typing import Optional
+
 import PySimpleGUI as sg
 from services.query.query_account_status import isvip
 from network.login import login_session
@@ -32,7 +34,7 @@ def remove_vip(user_id):
 def query_status(user_id):
     return isvip(user_id, cookies=session_cookie)
 
-def remove_credits(user_id):
+def remove_credits(user_id: object) -> Optional[str]:
     return remove_account_credits(user_id, cookies=session_cookie)
 
 def query_credits(user_id):
