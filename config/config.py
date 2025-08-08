@@ -16,7 +16,7 @@ API_ENDPOINTS = {
     "dev": {
         # 运营后台
         "base_url": "https://test-admin-fomsv2.everimaging.com/",
-        # 登录接口
+        # 登录
         "login": "https://test-admin-fomsv2.everimaging.com/api/admin/login",
         # 通过邮箱查询UID
         "user_info": "https://test-admin-fomsv2.everimaging.com/api/user_info",
@@ -33,7 +33,9 @@ API_ENDPOINTS = {
         # 查询兑换码个数
         "getCodeUseInfo":'https://test-admin-fomsv2.everimaging.com/api/activity/getCodeUseInfo',
         # 获取兑换码列表
-        "getActivityCodeUseList":"https://test-admin-fomsv2.everimaging.com/api/activity/getActivityCodeUseList"
+        "getActivityCodeUseList":"https://test-admin-fomsv2.everimaging.com/api/activity/getActivityCodeUseList",
+        # 给对应账号发送积分
+        "sendCredits" :"https://test-admin-fomsv2.everimaging.com/api/userInfo/sendCredit"
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",
