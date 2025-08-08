@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="7.1_v1.4 &quot;增加二次弹窗确认，调整按钮位置&quot;">
-      <change afterPath="$PROJECT_DIR$/services/recharge_credits/create_random.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Transfer_subscription_status.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Transfer_subscription_status.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="7.24 新增充值功能开发中..">
+      <change afterPath="$PROJECT_DIR$/services/recharge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/recharge/recharge_account_credits.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/recharge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/recharge_credits/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/recharge_credits/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/UItest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/recharge_credits/create_random.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +79,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.UI.executor": "Run",
+    "Python.UItest.executor": "Run",
     "Python.check_account_status (1).executor": "Run",
     "Python.http_request.executor": "Run",
     "Python.login (1).executor": "Run",
@@ -99,7 +100,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "settings.editor.splitter.proportion": "0.28309572",
+    "settings.editor.splitter.proportion": "0.28105906",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -128,6 +129,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UItest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Transfer_subscription_status" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UItest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -205,36 +228,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Transfer_subscription_status" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.UI" />
+        <item itemvalue="Python.UItest" />
         <item itemvalue="Python.query_account_credits" />
         <item itemvalue="Python.remove_vip" />
         <item itemvalue="Python.query_account_uid" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -405,7 +405,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751437052980</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="7.24 新增充值功能开发中..">
+      <option name="closed" value="true" />
+      <created>1753351248028</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1753351248028</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +439,8 @@
     <MESSAGE value="7.1_v1.2" />
     <MESSAGE value="7.1_v1.3" />
     <MESSAGE value="7.1_v1.4 &quot;增加二次弹窗确认，调整按钮位置&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="7.1_v1.4 &quot;增加二次弹窗确认，调整按钮位置&quot;" />
+    <MESSAGE value="7.24 新增充值功能开发中.." />
+    <option name="LAST_COMMIT_MESSAGE" value="7.24 新增充值功能开发中.." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$login__1_.coverage" NAME="login (1) Coverage Results" MODIFIED="1750903327364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />
