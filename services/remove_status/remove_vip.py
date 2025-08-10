@@ -1,11 +1,11 @@
 import requests
 
-from config import get_api
+from config.config import get_api
 from network.vpn_connection import api_request
 from services.query import query_account_uid
-from utils import format_timestamp_ms
-from utils import validate_input
-from config import target_account
+from utils.timestamp import format_timestamp_ms
+from utils.validate_user_input import validate_input
+from config.config import target_account
 
 
 '''订阅列表还是通过UID查询的，所以先调用接口查询UID'''
@@ -15,19 +15,9 @@ from config import target_account
 def remove_status(uid_or_email, cookies=None):
     #先对输入账号进行合法判断，邮箱则返回uid
     uid = validate_input(uid_or_email, cookies=cookies)
-    if "@" in uid_or_email:
-        uid = query_account_uid(uid_or_email, cookies)
-        if not uid:
-            return f"❌ 查询失败，该邮箱：{uid_or_email}无效或不存在"
-    else:
-        uid = uid_or_email
-    # 判断UID位数
-    if len(uid) not in (32, 33):
-        return f"❌ 查询失败，UID: {uid}无效"
-
 
     if uid == "invalid":
-        return "输入有误，请重新输入"
+        return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
     # 返回uid正确时，进行请求判断
     url = get_api("user_payment", "dev")
@@ -86,7 +76,7 @@ def remove_status(uid_or_email, cookies=None):
             tansfer_respones = api_request(tansfer_url,"post",cookies=cookies, headers=headers,json=params).json()
         if tansfer_respones.get("code") != "000":
             return "转移失败"
-        return "\n".join(result) + "\n转移成功"
+        return "\n".join(result) + "\n✅ 转移成功"
 
     except Exception as e:
         return f"❌ 请求异常：{str(e)}"

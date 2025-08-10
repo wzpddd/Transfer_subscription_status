@@ -1,11 +1,10 @@
 from typing import Optional
-
 import PySimpleGUI as sg
 from services.query.query_account_status import isvip
 from network.login import login_session
 from services.remove_status.remove_vip import remove_status
 from services.query.query_account_credits import query_account_credits
-from services.remove_status import remove_credits, remove_account_credits
+from services.remove_status.remove_credits import remove_account_credits
 import json
 import threading
 from services.recharge.recharge_account_credits import recharge_account_credits
@@ -49,10 +48,10 @@ def query_credits(user_id):
 
 
 def recharge_credits(user_id,credits_num):
-    return recharge_account_credits(user_id, cookies=session_cookie)
+    return recharge_account_credits(user_id, credits_num,cookies=session_cookie)
 
 
-def threaded_task(action, user_id, window,credits_number):
+def threaded_task(action, user_id, window,credits_number=None):
     if action == "remove_vip":
         result = remove_vip(user_id)
         window.write_event_value("-REMOVE_VIP_DONE-", result)
@@ -91,7 +90,7 @@ layout = [
 ]
 
 # 创建窗口
-window = sg.Window("🛠 自定义工具集合", layout)
+window = sg.Window("自定义工具集合 🛠", layout)
 # 事件循环
 while True:
     event, values = window.read()
@@ -117,6 +116,12 @@ while True:
         if val != filtered:
             window["credits_number"].update(filtered)
 
+    elif event == "移除订阅":
+        if confirm_action("确认移除订阅吗？"):
+            # 返回为true时执行
+            window["result"].update("⏳ 正在移除订阅...\n")
+            threading.Thread(target=threaded_task, args=("remove_vip", user_id, window), daemon=True).start()
+
     elif event == "查询会员":
         window["result"].update("⏳ 正在查询会员信息...\n")
         threading.Thread(target=threaded_task, args=("query_vip", user_id, window), daemon=True).start()
@@ -133,11 +138,15 @@ while True:
         threading.Thread(target=threaded_task, args=("query_credits", user_id, window), daemon=True).start()
 
     elif event == "充值":
+        # 如果没有输入数字就提示
+        if not credits_number:
+            window["result"].update("⚠️ 请输入想要充值的积分数量...\n",append=True)
+            continue
         window["result"].update("⏳ 正在充值积分...\n")
-        threading.Thread(target=threaded_task, args=("recharge_credits", user_id,credits_number, window), daemon=True).start()
+        threading.Thread(target=threaded_task, args=("recharge_credits", user_id,window,credits_number), daemon=True).start()
 
     elif event in ("-REMOVE_VIP_DONE-", "-QUERY_VIP_DONE-", "-QUERY_CREDITS_DONE-", "-REMOVE_CREDITS_DONE-",
-                   "RECHARGE_CREDITS_DONE-"):
+                   "-RECHARGE_CREDITS_DONE-"):
         result = values[event]
 
 

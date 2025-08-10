@@ -31,11 +31,11 @@ API_ENDPOINTS = {
         # 积分查询
         "get_score": "https://test-www.fotor.com/api/create/test/score/fotor",
         # 查询兑换码个数
-        "getCodeUseInfo":'https://test-admin-fomsv2.everimaging.com/api/activity/getCodeUseInfo',
+        "get_code_use_info":'https://test-admin-fomsv2.everimaging.com/api/activity/getCodeUseInfo',
         # 获取兑换码列表
-        "getActivityCodeUseList":"https://test-admin-fomsv2.everimaging.com/api/activity/getActivityCodeUseList",
+        "get_activity_code_use_list":"https://test-admin-fomsv2.everimaging.com/api/activity/getActivityCodeUseList",
         # 给对应账号发送积分
-        "sendCredits" :"https://test-admin-fomsv2.everimaging.com/api/userInfo/sendCredit"
+        "send_credits" :"https://test-admin-fomsv2.everimaging.com/api/userInfo/sendCredit"
     },
     "prod": {
         "base_url": "https://admin-fomsv2.everimaging.com/",

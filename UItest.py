@@ -8,14 +8,10 @@ layout = [
      sg.Input(default_text="wzptestuser30@fotor.com",
               disabled=True, key="fixed_uid", size=(35, 1),
               text_color='grey')],
-
+    # 启动事件（方便后续代码监听该事件变化）
     [sg.Text("请输入积分数量：", size=(15, 1)),
-     sg.InputText(
-         key="credit_amount",
-         size=(8, 1),
-         enable_events=True
-     ),
-     sg.Button("确定", key="submit_credit")],
+     sg.InputText(key="credits_number", size=(8, 1), enable_events=True),
+     sg.Button("充值")],
 
     [sg.Button("移除订阅"), sg.Button("移除积分"),
      sg.Button("查询会员"), sg.Button("查询积分")],
@@ -24,5 +20,7 @@ layout = [
 ]
 
 # 创建窗口
-window = sg.Window("🛠 自定义工具集合", layout)
-window.read()
+window = sg.Window("自定义工具集合 🛠", layout)
+while True:
+    values = window.read()
+window.close()

@@ -1,23 +1,19 @@
 from services.query.query_account_uid import query_account_uid
 from network.vpn_connection import *
 from config.config import get_api
-from utils import get_nested
-from utils import format_timestamp_ms
+from utils.dict_tools import get_nested
+from utils.timestamp import format_timestamp_ms
+from utils.validate_user_input import validate_input
 
 '''直接通过isvip接口查询账号状态'''
 
 
 def isvip(uid_or_email: str, cookies=None):
     # 先判断是否为邮箱，是邮箱就先获取UID
-    if "@" in uid_or_email:
-        uid = query_account_uid(uid_or_email, cookies=cookies)
-        if not uid:
-            return f"❌ 查询失败，该邮箱：{uid_or_email}无效或不存在"
-    else:
-        uid = uid_or_email
-    # 判断UID位数
-    if len(uid) not in (32, 33):
-        return f"❌ 查询失败，UID: {uid}无效"
+    uid = validate_input(uid_or_email, cookies=cookies)
+
+    if uid == "invalid":
+        return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
     # 通过isvip获取账号订阅状态
     base_url = get_api("isvip", "dev")
