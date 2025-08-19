@@ -30,6 +30,8 @@ API_ENDPOINTS = {
         "transfer_credits": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transferCredit",
         # 积分查询
         "get_score": "https://test-www.fotor.com/api/create/test/score/fotor",
+        # 新增兑换码
+        "add_coupon_code":"https://test-admin-fomsv2.everimaging.com/api/activity/addCouponCodeTime",
         # 查询兑换码个数
         "get_code_use_info":'https://test-admin-fomsv2.everimaging.com/api/activity/getCodeUseInfo',
         # 获取兑换码列表
@@ -50,10 +52,22 @@ API_ENDPOINTS = {
 
 
 # 获取URL，使用时先传url名，再传哪个环境
-def get_api(api: str, env: str = None):  # 必选项写在前面，可选项写在后面
+def get_api(*apis: str, env: str = None):  # 必选项写在前面，可选项写在后面，且支持一次传入多个参数
     env = (env or ENV).lower()  # 不传参则使用默认值ENV=dev
     if env not in API_ENDPOINTS:
         raise ValueError(f"无效的环境参数:{env}")
-    if api not in API_ENDPOINTS[env]:
-        raise ValueError(f"接口:{env}不存在于{env}环境")
-    return API_ENDPOINTS[env][api]
+
+    # 只传一个参数，直接返回字符串
+    if len(apis) == 1:
+        api = apis[0]
+        if api not in API_ENDPOINTS[env]:
+            raise ValueError(f"接口:{api} 不存在于 {env} 环境")
+        return API_ENDPOINTS[env][api]
+
+    # 传多个参数，返回 dict
+    urls = {}
+    for api in apis:
+        if api not in API_ENDPOINTS[env]:
+            raise ValueError(f"接口:{api} 不存在于 {env} 环境")
+        urls[api] = API_ENDPOINTS[env][api]
+    return urls

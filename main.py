@@ -19,10 +19,8 @@ def threaded_remove_vip(user_id, window):
 try:
     session_cookie = login_session()  # e.g. {'fotorAdmin.sid': 'xxx'}
 except Exception as e:
-    sg.popup_error("❌ 登录失败", str(e))
+    sg.popup_error("❌ 请检查网络", str(e))
     exit(1)
-
-sg.theme("Black")
 
 
 # 弹窗确认，不传值时使用预设文案，当选择yes返回true
@@ -47,8 +45,8 @@ def query_credits(user_id):
     return query_account_credits(user_id, cookies=session_cookie)
 
 
-def recharge_credits(user_id,credits_num):
-    return recharge_account_credits(user_id, credits_num,cookies=session_cookie)
+def recharge_credits(user_id,credits_number):
+    return recharge_account_credits(user_id, credits_number,cookies=session_cookie)
 
 
 def threaded_task(action, user_id, window,credits_number=None):
@@ -69,7 +67,13 @@ def threaded_task(action, user_id, window,credits_number=None):
         window.write_event_value("-RECHARGE_CREDITS_DONE-", result)
 
 
-# 布局
+
+
+# UI部分
+
+# 设置主题色为黑色，可修改
+sg.theme("Black")
+
 layout = [
     [sg.Text("请输入用户 ID:", size=(15, 1)),
      sg.InputText(key="user_id", size=(35, 1))],
@@ -89,6 +93,9 @@ layout = [
     [sg.Multiline("", size=(60, 30), key="result", disabled=True)]
 ]
 
+
+
+# main
 # 创建窗口
 window = sg.Window("自定义工具集合 🛠", layout)
 # 事件循环
@@ -116,6 +123,7 @@ while True:
         if val != filtered:
             window["credits_number"].update(filtered)
 
+# 监听按钮事件名
     elif event == "移除订阅":
         if confirm_action("确认移除订阅吗？"):
             # 返回为true时执行
@@ -149,7 +157,7 @@ while True:
                    "-RECHARGE_CREDITS_DONE-"):
         result = values[event]
 
-
+    # 处理返回结果文案
         def format_result(result):
             # 登录失效特判
             if isinstance(result, dict) and result.get("code") == "001":
@@ -166,7 +174,7 @@ while True:
             # 其他情况直接转字符串
             return str(result)
 
-
+    # 在界面上输出更新内容
         window["result"].update(format_result(result) + "\n", append=True)
         window["result"].Widget.see("end")
 window.close()

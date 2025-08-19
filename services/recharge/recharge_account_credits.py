@@ -7,7 +7,6 @@ from config.config import get_api
 
 
 def recharge_account_credits(uid_or_email ,credits_num  , cookies=None):
-    print(cookies)
     # 先对输入账号进行合法判断，邮箱则返回uid
     uid = validate_input(uid_or_email, cookies=cookies)
 
@@ -29,5 +28,5 @@ def recharge_account_credits(uid_or_email ,credits_num  , cookies=None):
     result = api_request(send_credits_api, "post",json=params, cookies=cookies).json()
     print(result)
     if get_nested(result,"data","msg") == "success":
-        return  f"✅ 已为 {uid_or_email} 充值{credits_num}credits"
+        return  f"✅ 已为 {uid_or_email} 充值 {credits_num} credits"
     return "❌ 充值失败"
