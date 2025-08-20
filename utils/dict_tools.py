@@ -1,13 +1,18 @@
 
-'''字典操作工具，拿到字典中想要的数据'''
-
+#如果字典里
+''''''
 #常规写法：
 
 def get_nested(d: dict, *keys) -> any:
     for key in keys:
-        if not isinstance(d, dict):
+        if isinstance(d, dict):
+            d = d.get(key)
+        elif isinstance(d, list) and isinstance(key, int):
+            if 0 <= key < len(d):
+                d = d[key]
+            else:
+                return None
+        else:
             return None
-        d = d.get(key)
     return d
 
-#用法：传入文件，依次输入每层key : nickname = get_nested(response, "data", "user", "profile", "nickname")

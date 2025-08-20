@@ -2,7 +2,7 @@ from network.vpn_connection import api_request, vpn_connection
 from config.config import get_api
 import requests
 
-api_url = get_api("login", "dev")
+api_url = get_api("login", env="dev")
 # print(api_url)
 # 后台登录账号密码
 payload = {

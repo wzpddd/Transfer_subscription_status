@@ -11,7 +11,7 @@ def query_account_credits(uid_or_email:str, cookies=None):
     if uid == "invalid":
         return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
-    get_score_api = get_api('get_score','dev')
+    get_score_api = get_api('get_score',env='dev')
     full_api = f'{get_score_api}/{uid}'
     print(full_api)
     results = api_request(full_api,cookies=cookies).json()

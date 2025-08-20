@@ -13,7 +13,7 @@ def remove_account_credits(uid_or_email: str, cookies: None):
         return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
     #先进行积分判断，没有积分的不执行下一步
-    get_credits_details_api = get_api("user_payment",'dev')
+    get_credits_details_api = get_api("user_payment",env='dev')
     params = {
         "key": "creditPoints",
         "value":uid,
@@ -27,7 +27,7 @@ def remove_account_credits(uid_or_email: str, cookies: None):
         return "❌ 当前账号无积分可转移"
 
     #转移积分
-    get_remove_credits_api = get_api('transfer_credits', 'dev')
+    get_remove_credits_api = get_api('transfer_credits', env='dev')
     print(get_remove_credits_api)
     params = {
         "fromUid":uid,

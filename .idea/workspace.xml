@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="8.8  v1.4更新recharge_credits">
-      <change afterPath="$PROJECT_DIR$/services/recharge/create_subscription_code.py" afterDir="false" />
+    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="8.19  v1.5增加兑换码（开发中）">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/recharge/recharge_account_credits.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/recharge/recharge_account_credits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/network/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/query/query_account_credits.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/query/query_account_credits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/query/query_account_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/query/query_account_status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/query/query_account_uid.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/query/query_account_uid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/recharge/create_subscription_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/recharge/create_subscription_code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/remove_status/remove_credits.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/remove_status/remove_credits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/remove_status/remove_vip.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/remove_status/remove_vip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/dict_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dict_tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,38 +78,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.UI.executor&quot;: &quot;Run&quot;,
-    &quot;Python.UItest.executor&quot;: &quot;Run&quot;,
-    &quot;Python.check_account_status (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.http_request.executor&quot;: &quot;Run&quot;,
-    &quot;Python.login (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.query_account_credits.executor&quot;: &quot;Run&quot;,
-    &quot;Python.query_account_uid.executor&quot;: &quot;Run&quot;,
-    &quot;Python.query_uid.executor&quot;: &quot;Run&quot;,
-    &quot;Python.recharge_account_credits.executor&quot;: &quot;Run&quot;,
-    &quot;Python.remove_status.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.vpn_connection.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/WZP/Desktop/Transfer_subscription_status&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.20751762&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.UI.executor": "Run",
+    "Python.UItest.executor": "Run",
+    "Python.check_account_status (1).executor": "Run",
+    "Python.create_subscription_code.executor": "Run",
+    "Python.http_request.executor": "Run",
+    "Python.login (1).executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.query_account_credits.executor": "Run",
+    "Python.query_account_uid.executor": "Run",
+    "Python.query_uid.executor": "Run",
+    "Python.recharge_account_credits.executor": "Run",
+    "Python.remove_status.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.vpn_connection.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/WZP/Desktop/Transfer_subscription_status",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.splitter.proportion": "0.20751762",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wzp\PycharmProjects\Transfer_subscription_status\services\query" />
@@ -113,7 +120,7 @@
       <recent name="C:\Users\WZP\Desktop\Transfer_subscription_status\services\remove_status" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.UItest">
+  <component name="RunManager" selected="Python.create_subscription_code">
     <configuration name="UItest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Transfer_subscription_status" />
       <option name="ENV_FILES" value="" />
@@ -128,6 +135,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UItest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="create_subscription_code" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Transfer_subscription_status" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/services/recharge" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/services/recharge/create_subscription_code.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -151,29 +180,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="C:\Users\WZP\Desktop\Transfer_subscription_status\main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="query_account_credits" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Transfer_subscription_status" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/services/query" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/services/query/query_account_credits.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -228,11 +234,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.create_subscription_code" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.UItest" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.recharge_account_credits" />
-        <item itemvalue="Python.query_account_credits" />
       </list>
     </recent_temporary>
   </component>
@@ -411,7 +417,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753351248028</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="8.19  v1.5增加兑换码（开发中）">
+      <option name="closed" value="true" />
+      <created>1755598193780</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1755598193780</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +452,19 @@
     <MESSAGE value="7.1_v1.3" />
     <MESSAGE value="7.1_v1.4 &quot;增加二次弹窗确认，调整按钮位置&quot;" />
     <MESSAGE value="7.24 新增充值功能开发中.." />
-    <option name="LAST_COMMIT_MESSAGE" value="7.24 新增充值功能开发中.." />
+    <MESSAGE value="8.19  v1.5增加兑换码（开发中）" />
+    <option name="LAST_COMMIT_MESSAGE" value="8.19  v1.5增加兑换码（开发中）" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/services/recharge/create_subscription_code.py</url>
+          <line>73</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$login__1_.coverage" NAME="login (1) Coverage Results" MODIFIED="1750903327364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/network" />

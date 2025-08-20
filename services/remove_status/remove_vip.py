@@ -20,7 +20,7 @@ def remove_status(uid_or_email, cookies=None):
         return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
     # 返回uid正确时，进行请求判断
-    url = get_api("user_payment", "dev")
+    url = get_api("user_payment", env="dev")
     params = {
         "key": "subscription",
         "value": uid,
@@ -63,7 +63,7 @@ def remove_status(uid_or_email, cookies=None):
             result.append(f"🆔 套餐ID：{_id}\n📅 创建时间：{dt}\n📝 订阅类型：{_desc}\n" + "-" * 50)
 
     # 设置默认转移账号,一般不会更改
-        tansfer_url = get_api("transfer_subscribe", "dev")
+        tansfer_url = get_api("transfer_subscribe", env="dev")
         headers = {
             "x-app-id" : "app-fotor-web"
         }

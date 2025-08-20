@@ -28,13 +28,13 @@ API_ENDPOINTS = {
         "user_payment": "https://test-admin-fomsv2.everimaging.com/api/userInfoForPayment",
         # 转移积分
         "transfer_credits": "https://test-admin-fomsv2.everimaging.com/api/userInfo/transferCredit",
-        # 积分查询
+        # 积分查询（路径参数）
         "get_score": "https://test-www.fotor.com/api/create/test/score/fotor",
         # 新增兑换码
         "add_coupon_code":"https://test-admin-fomsv2.everimaging.com/api/activity/addCouponCodeTime",
         # 查询兑换码个数
         "get_code_use_info":'https://test-admin-fomsv2.everimaging.com/api/activity/getCodeUseInfo',
-        # 获取兑换码列表
+        # 获取兑换码列表（查询参数）
         "get_activity_code_use_list":"https://test-admin-fomsv2.everimaging.com/api/activity/getActivityCodeUseList",
         # 给对应账号发送积分
         "send_credits" :"https://test-admin-fomsv2.everimaging.com/api/userInfo/sendCredit"

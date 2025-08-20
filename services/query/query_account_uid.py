@@ -3,7 +3,7 @@ from network.vpn_connection import api_request
 
 '''查询邮箱的UID'''
 def query_account_uid(email, cookies=None):
-        url = get_api("user_info", "dev")
+        url = get_api("user_info", env="dev")
         params = {
             "appleName": "",
             "pageNo": '1',
