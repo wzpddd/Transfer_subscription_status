@@ -8,12 +8,7 @@ from services.remove_status.remove_credits import remove_account_credits
 import json
 import threading
 from services.recharge.recharge_account_credits import recharge_account_credits
-
-
-# 线程执行函数，避免未响应
-def threaded_remove_vip(user_id, window):
-    result = remove_vip(user_id)
-    window.write_event_value("-VIP_DONE-", result)
+from services.recharge.create_subscription_code import get_coupon_list
 
 
 try:
@@ -48,6 +43,9 @@ def query_credits(user_id):
 def recharge_credits(user_id,credits_number):
     return recharge_account_credits(user_id, credits_number,cookies=session_cookie)
 
+def create_sub_code(vip_or_svip):
+    return get_coupon_list(vip_or_svip, cookie=session_cookie)
+
 
 def threaded_task(action, user_id, window,credits_number=None):
     if action == "remove_vip":
@@ -65,35 +63,44 @@ def threaded_task(action, user_id, window,credits_number=None):
     elif action == "recharge_credits":
         result = recharge_credits(user_id,credits_number)
         window.write_event_value("-RECHARGE_CREDITS_DONE-", result)
-
-
+    elif action == "create_sub_code":
+        result = create_sub_code(user_id)
+        window.write_event_value("-CREATE_SUB_CODE_DONE-", result)
 
 
 # UI部分
 
 # 设置主题色为黑色，可修改
-sg.theme("Black")
-
+sg.theme("GrayGrayGray")
+# 默认选项
+options = ['vip', 'svip']
 layout = [
+    # 用户 ID 输入框
     [sg.Text("请输入用户 ID:", size=(15, 1)),
-     sg.InputText(key="user_id", size=(35, 1))],
+     sg.InputText(key="user_id", size=(25, 1))],
 
+    # 固定账号显示
     [sg.Text("默认转移账号为：", size=(15, 1)),
      sg.Input(default_text="wzptestuser30@fotor.com",
-              disabled=True, key="fixed_uid", size=(35, 1),
-              text_color='grey')],
-    # 启动事件（方便后续代码监听该事件变化）
+              disabled=True, key="fixed_uid", size=(25, 1), text_color='grey')],
+
+    # 积分数量和充值相关控件
     [sg.Text("请输入积分数量：", size=(15, 1)),
      sg.InputText(key="credits_number", size=(8, 1), enable_events=True),
      sg.Button("充值")],
 
+    # 下拉选择生成内容
+    [sg.Text('生成会员兑换码：', size=(15, 1)),
+     sg.Combo(options, key='-COMBO-', default_value=options[0], readonly=True, size=(6, 1)),
+     sg.Button('确认')],
+
+    # 功能按钮
     [sg.Button("移除订阅"), sg.Button("移除积分"),
      sg.Button("查询会员"), sg.Button("查询积分")],
 
-    [sg.Multiline("", size=(60, 30), key="result", disabled=True)]
+    # 结果显示区域
+    [sg.Multiline("", size=(50, 20), key="result", disabled=True)]
 ]
-
-
 
 # main
 # 创建窗口
@@ -107,9 +114,6 @@ while True:
     window["result"].update("")
     user_id = values["user_id"].strip()
     credits_number= values["credits_number"].strip()
-    if not user_id:
-        window["result"].update("⚠️ 请输入用户 ID！\n", append=True)
-        continue
 
     # 监听输入的credits数量，只能是4个字符内的数字
     if event == "credits_number":
@@ -123,7 +127,7 @@ while True:
         if val != filtered:
             window["credits_number"].update(filtered)
 
-# 监听按钮事件名
+    # 监听按钮事件名
     elif event == "移除订阅":
         if confirm_action("确认移除订阅吗？"):
             # 返回为true时执行
@@ -146,6 +150,9 @@ while True:
         threading.Thread(target=threaded_task, args=("query_credits", user_id, window), daemon=True).start()
 
     elif event == "充值":
+        if not user_id:
+            window["result"].update("⚠️ 请输入用户 ID！\n", append=True)
+            continue
         # 如果没有输入数字就提示
         if not credits_number:
             window["result"].update("⚠️ 请输入想要充值的积分数量...\n",append=True)
@@ -153,9 +160,17 @@ while True:
         window["result"].update("⏳ 正在充值积分...\n")
         threading.Thread(target=threaded_task, args=("recharge_credits", user_id,window,credits_number), daemon=True).start()
 
+    elif event == "确认":
+        vip_status = values["-COMBO-"]
+        window["result"].update("⏳ 正在生成会员兑换码...\n")
+        threading.Thread(target=threaded_task, args=("create_sub_code", vip_status , window), daemon=True).start()
+
+
     elif event in ("-REMOVE_VIP_DONE-", "-QUERY_VIP_DONE-", "-QUERY_CREDITS_DONE-", "-REMOVE_CREDITS_DONE-",
-                   "-RECHARGE_CREDITS_DONE-"):
+                   "-RECHARGE_CREDITS_DONE-","-CREATE_SUB_CODE_DONE-"):
         result = values[event]
+
+
 
     # 处理返回结果文案
         def format_result(result):

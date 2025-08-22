@@ -13,68 +13,64 @@ from config.config import get_api
     add_coupon_code 的 oldaddtimes = get_code_use_info_url add_times， 表示后续新增数量
 '''
 
-pro_code_params = {
+vip_params = {
     "activity_id": 871,
     "code_id": 725,
     "activity_type": "random"
 }
-proplus_code_params = {
+svip_params = {
     "activity_id": 870,
     "code_id": 724,
     "activity_type": "random"
 }
 
-def request():
-    return
 
-def create_sub_code(pro_or_proplus=str, cookie=None):
+def create_sub_code(vip_or_svip_params: dict, cookie=None) -> dict:
     add_coupon_code_url, get_code_use_info_url, get_activity_code_use_list_url = get_api("add_coupon_code",
                                                                                          "get_code_use_info",
                                                                                          "get_activity_code_use_list",
                                                                                          env="dev").values()
-    if pro_or_proplus == "pro":
-        result = api_request(get_code_use_info_url, 'get', params=pro_code_params, cookies=cookie).json()
+
+    result = api_request(get_code_use_info_url, 'get', params=vip_or_svip_params, cookies=cookie).json()
+    if get_nested(result, "code") == "000":
+        # 拿到总共的数量和新增的数量
+        old_times = get_nested(result, "data", "times")
+        old_add_times = get_nested(result, "data", "add_times")
+        # 传入add 接口
+        params = {
+            "code_id": vip_or_svip_params["code_id"],
+            "newTimes": 1,
+            "oldTimes": old_times,
+            "oldAddTimes": old_add_times,
+            "codeType": "random"
+        }
+        # 新增兑换码
+        result = api_request(add_coupon_code_url, 'post', json=params, cookies=cookie).json()
         if get_nested(result, "code") == "000":
-            # 拿到总共的数量和新增的数量
-            old_times = get_nested(result, "data", "times")
-            old_add_times = get_nested(result, "data", "add_times")
-            # 传入add 接口
+            '''拿总数算出最后个code在第几页'''
+            # 请求一页10个
+            page_size = 10
+            # 因为先执行查询，再添加，所以新的总数需要在老的数量上+1
+            new_total_times = old_times + 1
+            last_page_num = new_total_times // page_size + 1
+            last_code_num = new_total_times % page_size - 1
+
             params = {
-                "code_id": pro_code_params["code_id"],
-                "newTimes": 1,
-                "oldTimes": old_times,
-                "oldAddTimes": old_add_times,
-                "codeType": "random"
+                "activity_type": "random",
+                "code_id": vip_or_svip_params["code_id"],
+                "activity_id": vip_or_svip_params["activity_id"],
+                "pageNo": last_page_num,
+                "pageSize": page_size
             }
-            # 新增兑换码
-            result = api_request(add_coupon_code_url, 'post', json=params, cookies=cookie).json()
-            if get_nested(result, "code") == "000":
-                '''拿总数算出最后个code在第几页'''
-                # 请求一页10个
-                page_size = 10
-                # 因为先执行查询，再添加，所以新的总数需要在老的数量上+1
-                new_total_times = old_times + 1
-                last_page_num = new_total_times // page_size + 1
-                last_code_num = new_total_times % page_size - 1
-                print(last_page_num)
-                print(last_code_num)
-                params = {
-                    "activity_type": "random",
-                    "code_id": pro_code_params["code_id"],
-                    "activity_id": pro_code_params["activity_id"],
-                    "pageNo": last_page_num,
-                    "pageSize": page_size
-                }
-                result = api_request(get_activity_code_use_list_url, 'get', params=params, cookies=cookie).json()
-                last_code = get_nested(result, "data", "list", last_code_num, "code")
-                return last_code
-        return "❌ 新增兑换码失败"
-    elif pro_or_proplus == "pro_plus":
-        return
+            result = api_request(get_activity_code_use_list_url, 'get', params=params, cookies=cookie).json()
+            last_code = get_nested(result, "data", "list", last_code_num, "code")
+            return last_code
+    return "❌ 新增兑换码失败"
 
 
-cookies = {
-    "fotorAdmin.sid": "s%3A4Sy0QYmisRplDRX842xxveGwXFMuciJw.1Ox7vqGt66eNgQqWqul8b%2Bs098ZcCJii72Mt3uOwC18"
-}
-
-create_sub_code("pro", cookies)
+def get_coupon_list(vip_or_svip=str, cookie=None):
+    if vip_or_svip == "vip":
+        return create_sub_code(vip_params, cookie)
+    elif vip_or_svip == "svip":
+        return create_sub_code(svip_params, cookie)
+    return "出现未知错误"

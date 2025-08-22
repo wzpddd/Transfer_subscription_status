@@ -1,0 +1,2 @@
+#打包命令
+pyinstaller --onefile --windowed --clean --name "XXX" UI.py
