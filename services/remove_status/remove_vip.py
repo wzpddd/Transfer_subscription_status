@@ -1,11 +1,7 @@
-import requests
-
-from config.config import get_api
+from config.config import get_api,get_account
 from network.vpn_connection import api_request
-from services.query import query_account_uid
 from utils.timestamp import format_timestamp_ms
 from utils.validate_user_input import validate_input
-from config.config import target_account
 
 
 '''订阅列表还是通过UID查询的，所以先调用接口查询UID'''
@@ -70,7 +66,7 @@ def remove_status(uid_or_email, cookies=None):
         for item in subscriptions:
             params = {
                 "ids" : [item.get("id")],
-                "toUid":target_account
+                "toUid":get_account("test")
             }
 
             tansfer_respones = api_request(tansfer_url,"post",cookies=cookies, headers=headers,json=params).json()

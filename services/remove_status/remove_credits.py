@@ -1,6 +1,5 @@
-from config.config import get_api,target_account
+from config.config import get_api,get_account
 from network.vpn_connection import api_request
-from services.query import query_account_uid
 from utils.validate_user_input import validate_input
 import logging
 
@@ -28,12 +27,10 @@ def remove_account_credits(uid_or_email: str, cookies: None):
 
     #转移积分
     get_remove_credits_api = get_api('transfer_credits', env='dev')
-    print(get_remove_credits_api)
     params = {
         "fromUid":uid,
-        "toUid":target_account
+        "toUid":get_account("test")
     }
-    print(uid,target_account)
     results = api_request(get_remove_credits_api,"post", json=params,cookies=cookies).json()
 
     if results["code"] == "000":

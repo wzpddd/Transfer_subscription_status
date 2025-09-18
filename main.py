@@ -9,7 +9,7 @@ import json
 import threading
 from services.recharge.recharge_account_credits import recharge_account_credits
 from services.recharge.create_subscription_code import get_coupon_list
-
+import UI
 
 try:
     session_cookie = login_session()  # e.g. {'fotorAdmin.sid': 'xxx'}
@@ -22,30 +22,24 @@ except Exception as e:
 def confirm_action(message="你确定要继续吗？"):
     return sg.popup_yes_no(message) == "Yes"
 
-
-# 调用的工具函数
+# 调用工具函数
 def remove_vip(user_id):
     return remove_status(user_id, cookies=session_cookie)
-
 
 def query_status(user_id):
     return isvip(user_id, cookies=session_cookie)
 
-
 def remove_credits(user_id: object) -> Optional[str]:
     return remove_account_credits(user_id, cookies=session_cookie)
 
-
 def query_credits(user_id):
     return query_account_credits(user_id, cookies=session_cookie)
-
 
 def recharge_credits(user_id,credits_number):
     return recharge_account_credits(user_id, credits_number,cookies=session_cookie)
 
 def create_sub_code(vip_or_svip):
     return get_coupon_list(vip_or_svip, cookie=session_cookie)
-
 
 def threaded_task(action, user_id, window,credits_number=None):
     if action == "remove_vip":
@@ -68,43 +62,9 @@ def threaded_task(action, user_id, window,credits_number=None):
         window.write_event_value("-CREATE_SUB_CODE_DONE-", result)
 
 
-# UI部分
-
-# 设置主题色为黑色，可修改
-sg.theme("GrayGrayGray")
-# 默认选项
-options = ['vip', 'svip']
-layout = [
-    # 用户 ID 输入框
-    [sg.Text("请输入用户 ID:", size=(15, 1)),
-     sg.InputText(key="user_id", size=(25, 1))],
-
-    # 固定账号显示
-    [sg.Text("默认转移账号为：", size=(15, 1)),
-     sg.Input(default_text="wzptestuser30@fotor.com",
-              disabled=True, key="fixed_uid", size=(25, 1), text_color='grey')],
-
-    # 积分数量和充值相关控件
-    [sg.Text("请输入积分数量：", size=(15, 1)),
-     sg.InputText(key="credits_number", size=(8, 1), enable_events=True),
-     sg.Button("充值")],
-
-    # 下拉选择生成内容
-    [sg.Text('生成会员兑换码：', size=(15, 1)),
-     sg.Combo(options, key='-COMBO-', default_value=options[0], readonly=True, size=(6, 1)),
-     sg.Button('确认')],
-
-    # 功能按钮
-    [sg.Button("移除订阅"), sg.Button("移除积分"),
-     sg.Button("查询会员"), sg.Button("查询积分")],
-
-    # 结果显示区域
-    [sg.Multiline("", size=(50, 20), key="result", disabled=True)]
-]
-
 # main
 # 创建窗口
-window = sg.Window("自定义工具集合 🛠", layout)
+window = sg.Window("自定义工具集合 🛠", UI.layout)
 # 事件循环
 while True:
     event, values = window.read()
