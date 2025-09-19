@@ -7,6 +7,9 @@ sg.theme("GrayGrayGray")
 # 默认选项
 options = ['vip', 'svip']
 layout = [
+
+    [sg.Text("当前环境:"),
+     sg.Combo(["dev", "prod"], default_value="dev", key="-ENV-", readonly=True, enable_events=True)],
     # 用户 ID 输入框
     [sg.Text("请输入用户 ID:", size=(15, 1)),
      sg.InputText(key="user_id", size=(25, 1))],

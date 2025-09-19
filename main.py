@@ -11,8 +11,10 @@ from services.recharge.recharge_account_credits import recharge_account_credits
 from services.recharge.create_subscription_code import get_coupon_list
 import UI
 
+
+current_env = "dev"
 try:
-    session_cookie = login_session()  # e.g. {'fotorAdmin.sid': 'xxx'}
+    session_cookie = login_session(current_env)  # e.g. {'fotorAdmin.sid': 'xxx'}
 except Exception as e:
     sg.popup_error("❌ 请检查网络", str(e))
     exit(1)
@@ -60,6 +62,12 @@ def threaded_task(action, user_id, window,credits_number=None):
     elif action == "create_sub_code":
         result = create_sub_code(user_id)
         window.write_event_value("-CREATE_SUB_CODE_DONE-", result)
+    elif action == "change_env":
+        try:
+            new_cookie = login_session(user_id)  # 这里 user_id 就传 chosen_env
+            window.write_event_value("-CHANGE_ENV_DONE-", (user_id, new_cookie))
+        except Exception as e:
+            window.write_event_value("-CHANGE_ENV_DONE-", (user_id, e))
 
 
 # main
@@ -100,7 +108,7 @@ while True:
 
     elif event == "移除积分":
         # 增加二次确认
-        if confirm_action("确认移除积分吗？"):
+        if confirm_action("⚠️ 确认移除积分吗？"):
             # 返回为true时执行
             window["result"].update("⏳ 正在移除积分...\n")
             threading.Thread(target=threaded_task, args=("remove_credits", user_id, window), daemon=True).start()
@@ -125,9 +133,35 @@ while True:
         window["result"].update("⏳ 正在生成会员兑换码...\n")
         threading.Thread(target=threaded_task, args=("create_sub_code", vip_status , window), daemon=True).start()
 
+    elif event == "-ENV-":
+        chosen_env = values["-ENV-"]
+
+        if chosen_env == "prod":
+            if not confirm_action("⚠️ 确认切换到正式环境吗？"):
+                window["-ENV-"].update(current_env)
+                continue
+
+        window["result"].update(f"⏳ 正在切换到 {chosen_env} 环境...\n")
+        threading.Thread(
+            target=threaded_task,
+            args=("change_env", chosen_env, window),
+            daemon=True
+        ).start()
+
+    elif event == "-CHANGE_ENV_DONE-":
+        chosen_env, result = values[event]
+        if isinstance(result, dict):  # 登录成功，拿到了 cookie
+            session_cookie = result
+            current_env = chosen_env
+            window["result"].update(f"✅ 已切换到 {current_env} 环境\n", append=True)
+        else:  # 登录失败
+            window["-ENV-"].update(current_env)  # 回到原来的环境
+            window["result"].update(f"❌ 切换环境失败: {result}\n", append=True)
+
+
 
     elif event in ("-REMOVE_VIP_DONE-", "-QUERY_VIP_DONE-", "-QUERY_CREDITS_DONE-", "-REMOVE_CREDITS_DONE-",
-                   "-RECHARGE_CREDITS_DONE-","-CREATE_SUB_CODE_DONE-"):
+                   "-RECHARGE_CREDITS_DONE-","-CREATE_SUB_CODE_DONE-","-CHANGE_ENV_DONE-"):
         result = values[event]
 
 
