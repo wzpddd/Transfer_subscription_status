@@ -22,7 +22,7 @@ def recharge_account_credits(uid_or_email ,credits_num  , cookies=None):
             "duration": 1,
             "cycle" : "month",
             "type":"activity",
-            "reason":"快速充值"
+            "reason":"内部账号快速充值"
         }
     }
     result = api_request(send_credits_api, "post",json=params, cookies=cookies).json()

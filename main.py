@@ -12,7 +12,7 @@ from services.recharge.create_subscription_code import get_coupon_list
 import UI
 
 
-current_env = "dev"
+current_env = "prod"
 try:
     session_cookie = login_session(current_env)  # e.g. {'fotorAdmin.sid': 'xxx'}
 except Exception as e:
