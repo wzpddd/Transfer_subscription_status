@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="9.19 v1.6添加正式环境切换">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/recharge/recharge_account_credits.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/recharge/recharge_account_credits.py" afterDir="false" />
-    </list>
+    <list default="true" id="969e9bbe-20c3-4801-8510-d3712476e59d" name="Changes" comment="9.22 v1.6添加正式环境切换" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -291,7 +287,7 @@
       <workItem from="1758178696259" duration="784000" />
       <workItem from="1758179491591" duration="9682000" />
       <workItem from="1758246816261" duration="21025000" />
-      <workItem from="1758533246211" duration="1739000" />
+      <workItem from="1758533246211" duration="2053000" />
     </task>
     <task id="LOCAL-00001" summary="6.24">
       <option name="closed" value="true" />
@@ -477,7 +473,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758275047813</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="9.22 v1.6添加正式环境切换">
+      <option name="closed" value="true" />
+      <created>1758535298879</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1758535298879</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +513,8 @@
     <MESSAGE value="8.21  v1.5增加兑换码（开发中）" />
     <MESSAGE value="9.18 v1.6添加正式环境切换" />
     <MESSAGE value="9.19 v1.6添加正式环境切换" />
-    <option name="LAST_COMMIT_MESSAGE" value="9.19 v1.6添加正式环境切换" />
+    <MESSAGE value="9.22 v1.6添加正式环境切换" />
+    <option name="LAST_COMMIT_MESSAGE" value="9.22 v1.6添加正式环境切换" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Transfer_subscription_status$check_account_status__1_.coverage" NAME="check_account_status (1) Coverage Results" MODIFIED="1751015730129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/services/query" />
