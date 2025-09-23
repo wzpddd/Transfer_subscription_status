@@ -12,24 +12,40 @@ from config.config import get_api
 注：add_coupon_code 的 old_times = get_code_use_info_url 的times，都表示总的time数量
     add_coupon_code 的 oldaddtimes = get_code_use_info_url add_times， 表示后续新增数量
 '''
-
-vip_params = {
-    "activity_id": 871,
-    "code_id": 725,
-    "activity_type": "random"
+get_code_env_params = {
+    "dev": {
+        "vip_params": {
+            "activity_id": 871,
+            "code_id": 725,
+            "activity_type": "random"
+        },
+        "svip_params": {
+            "activity_id": 870,
+            "code_id": 724,
+            "activity_type": "random"
+        }
+    },
+    "prod": {
+        "vip_params": {
+            "activity_id":4001 ,
+            "code_id":3927 ,
+            "activity_type": "random"
+        },
+        "svip_params": {
+            "activity_id": 3999,
+            "code_id":3925,
+            "activity_type": "random"
+        }
+    }
 }
-svip_params = {
-    "activity_id": 870,
-    "code_id": 724,
-    "activity_type": "random"
-}
 
 
-def create_sub_code(vip_or_svip_params: dict, cookie=None) -> dict:
+
+def create_sub_code(env, vip_or_svip_params: dict, cookie=None) -> dict:
     add_coupon_code_url, get_code_use_info_url, get_activity_code_use_list_url = get_api("add_coupon_code",
                                                                                          "get_code_use_info",
                                                                                          "get_activity_code_use_list",
-                                                                                         env="dev").values()
+                                                                                         env=env).values()
 
     result = api_request(get_code_use_info_url, 'get', params=vip_or_svip_params, cookies=cookie).json()
     if get_nested(result, "code") == "000":
@@ -68,9 +84,9 @@ def create_sub_code(vip_or_svip_params: dict, cookie=None) -> dict:
     return "❌ 新增兑换码失败"
 
 
-def get_coupon_list(vip_or_svip=str, cookie=None):
+def get_coupon_list(env, vip_or_svip=str, cookie=None):
     if vip_or_svip == "vip":
-        return create_sub_code(vip_params, cookie)
+        return create_sub_code(env, get_nested(get_code_env_params,env,"vip_params"), cookie)
     elif vip_or_svip == "svip":
-        return create_sub_code(svip_params, cookie)
+        return create_sub_code(env, get_nested(get_code_env_params,env,"svip_params"), cookie)
     return "出现未知错误"

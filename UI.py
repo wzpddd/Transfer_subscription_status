@@ -6,6 +6,13 @@ import PySimpleGUI as sg
 sg.theme("GrayGrayGray")
 # 默认选项
 options = ['vip', 'svip']
+
+# 转移账号的固定展示文案内容
+fixed_accounts = {
+    "dev": "wzptestuser30@fotor.com",
+    "prod": "wzpproduser30@fotor.com"
+}
+
 layout = [
 
     [sg.Text("当前环境:"),
@@ -16,7 +23,7 @@ layout = [
 
     # 固定账号显示
     [sg.Text("默认转移账号为：", size=(15, 1)),
-     sg.Input(default_text="wzptestuser30@fotor.com",
+     sg.Input(default_text=fixed_accounts["dev"],
               disabled=True, key="fixed_uid", size=(25, 1), text_color='grey')],
 
     # 积分数量和充值相关控件

@@ -8,15 +8,15 @@ from utils.validate_user_input import validate_input
 '''直接通过isvip接口查询账号状态'''
 
 
-def isvip(uid_or_email: str, cookies=None):
+def isvip(env,uid_or_email: str, cookies=None):
     # 先判断是否为邮箱，是邮箱就先获取UID
-    uid = validate_input(uid_or_email, cookies=cookies)
+    uid = validate_input(env,uid_or_email, cookies=cookies)
 
     if uid == "invalid":
         return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
     # 通过isvip获取账号订阅状态
-    base_url = get_api("isvip", env="dev")
+    base_url = get_api("isvip", env=env)
     # 拼接参数带入url
     full_api = f"{base_url}/{uid}"
 

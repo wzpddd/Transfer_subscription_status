@@ -6,15 +6,15 @@ from config.config import get_api
 
 
 
-def recharge_account_credits(uid_or_email ,credits_num  , cookies=None):
+def recharge_account_credits(env,uid_or_email ,credits_num  , cookies=None):
     # 先对输入账号进行合法判断，邮箱则返回uid
-    uid = validate_input(uid_or_email, cookies=cookies)
+    uid = validate_input(env,uid_or_email, cookies=cookies)
 
     if uid == "invalid":
         return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
     #将参数传递给接口
-    send_credits_api  = get_api("send_credits", env="dev")
+    send_credits_api  = get_api("send_credits", env=env)
     params = {
         "uid" : uid,
         "credits" : {

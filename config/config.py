@@ -9,7 +9,7 @@ ENV = os.getenv("APP_ENV", "dev").lower()  # 不区分大小写
 # 默认接收的UID,"wzptestuser30@fotor.com"
 target_account = {
     # 测试环境默认接收的UID,"wzptestuser30@fotor.com"
-    "test": "6dd0933c2a774c52a435eabdb53966bd",
+    "dev": "6dd0933c2a774c52a435eabdb53966bd",
     # 测试环境默认接收的UID,"wzpproduser30@fotor.com"
     "prod": "c5a6ec07f4154b6e85720dde1ea3d147"
 }

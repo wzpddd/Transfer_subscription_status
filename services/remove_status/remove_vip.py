@@ -8,15 +8,15 @@ from utils.validate_user_input import validate_input
 
 
 # 获取账号的订阅列表
-def remove_status(uid_or_email, cookies=None):
+def remove_status(env,uid_or_email, cookies=None):
     #先对输入账号进行合法判断，邮箱则返回uid
-    uid = validate_input(uid_or_email, cookies=cookies)
+    uid = validate_input(env,uid_or_email, cookies=cookies)
 
     if uid == "invalid":
         return f"❌ 查询失败，该邮箱：{uid_or_email}无效或错误"
 
     # 返回uid正确时，进行请求判断
-    url = get_api("user_payment", env="dev")
+    url = get_api("user_payment", env=env)
     params = {
         "key": "subscription",
         "value": uid,
@@ -58,15 +58,15 @@ def remove_status(uid_or_email, cookies=None):
             dt = format_timestamp_ms(ts)
             result.append(f"🆔 套餐ID：{_id}\n📅 创建时间：{dt}\n📝 订阅类型：{_desc}\n" + "-" * 50)
 
-    # 设置默认转移账号,一般不会更改
-        tansfer_url = get_api("transfer_subscribe", env="dev")
+    # 设置默认转移账号，随环境变化更新
+        tansfer_url = get_api("transfer_subscribe", env=env)
         headers = {
             "x-app-id" : "app-fotor-web"
         }
         for item in subscriptions:
             params = {
                 "ids" : [item.get("id")],
-                "toUid":get_account("test")
+                "toUid":get_account(env)
             }
 
             tansfer_respones = api_request(tansfer_url,"post",cookies=cookies, headers=headers,json=params).json()

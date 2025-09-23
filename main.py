@@ -1,5 +1,7 @@
 from typing import Optional
 import PySimpleGUI as sg
+
+from UI import fixed_accounts
 from services.query.query_account_status import isvip
 from network.login import login_session
 from services.remove_status.remove_vip import remove_status
@@ -12,7 +14,7 @@ from services.recharge.create_subscription_code import get_coupon_list
 import UI
 
 
-current_env = "prod"
+current_env = "dev"
 try:
     session_cookie = login_session(current_env)  # e.g. {'fotorAdmin.sid': 'xxx'}
 except Exception as e:
@@ -26,22 +28,22 @@ def confirm_action(message="你确定要继续吗？"):
 
 # 调用工具函数
 def remove_vip(user_id):
-    return remove_status(user_id, cookies=session_cookie)
+    return remove_status(current_env,user_id,cookies=session_cookie)
 
 def query_status(user_id):
-    return isvip(user_id, cookies=session_cookie)
+    return isvip(current_env,user_id,cookies=session_cookie)
 
 def remove_credits(user_id: object) -> Optional[str]:
-    return remove_account_credits(user_id, cookies=session_cookie)
+    return remove_account_credits(current_env,user_id,cookies=session_cookie)
 
 def query_credits(user_id):
-    return query_account_credits(user_id, cookies=session_cookie)
+    return query_account_credits(current_env,user_id,cookies=session_cookie)
 
 def recharge_credits(user_id,credits_number):
-    return recharge_account_credits(user_id, credits_number,cookies=session_cookie)
+    return recharge_account_credits(current_env,user_id, credits_number,cookies=session_cookie)
 
 def create_sub_code(vip_or_svip):
-    return get_coupon_list(vip_or_svip, cookie=session_cookie)
+    return get_coupon_list(current_env,vip_or_svip, cookie=session_cookie)
 
 def threaded_task(action, user_id, window,credits_number=None):
     if action == "remove_vip":
@@ -64,8 +66,8 @@ def threaded_task(action, user_id, window,credits_number=None):
         window.write_event_value("-CREATE_SUB_CODE_DONE-", result)
     elif action == "change_env":
         try:
-            new_cookie = login_session(user_id)  # 这里 user_id 就传 chosen_env
-            window.write_event_value("-CHANGE_ENV_DONE-", (user_id, new_cookie))
+            session_cookie = login_session(user_id)  # 这里 user_id 就传 chosen_env
+            window.write_event_value("-CHANGE_ENV_DONE-", (user_id, session_cookie))
         except Exception as e:
             window.write_event_value("-CHANGE_ENV_DONE-", (user_id, e))
 
@@ -142,6 +144,7 @@ while True:
                 continue
 
         window["result"].update(f"⏳ 正在切换到 {chosen_env} 环境...\n")
+
         threading.Thread(
             target=threaded_task,
             args=("change_env", chosen_env, window),
@@ -152,8 +155,14 @@ while True:
         chosen_env, result = values[event]
         if isinstance(result, dict):  # 登录成功，拿到了 cookie
             session_cookie = result
+            # 在成功拿到cookie后才更新当前环境
             current_env = chosen_env
             window["result"].update(f"✅ 已切换到 {current_env} 环境\n", append=True)
+            # 刷新默认转移账号文案
+            window["fixed_uid"].update(fixed_accounts[current_env])
+            # 将输入框内的文案清空
+            window["user_id"].update("")
+            window["credits_number"].update("")
         else:  # 登录失败
             window["-ENV-"].update(current_env)  # 回到原来的环境
             window["result"].update(f"❌ 切换环境失败: {result}\n", append=True)
