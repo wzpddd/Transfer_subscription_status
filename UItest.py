@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-
+from utils.resource_path import get_resource_path
 # layout = [
 #     [sg.Text("请输入用户 ID:", size=(15, 1)),
 #      sg.InputText(key="user_id", size=(35, 1))],
@@ -19,20 +19,29 @@ import PySimpleGUI as sg
 #     [sg.Multiline("", size=(60, 30), key="result", disabled=True)]
 # ]
 # sg.theme_previewer()
+
+
+
 sg.theme("GrayGrayGray")
 # 默认选项
 options = ['vip', 'svip']
 layout = [
-    [sg.Text("当前环境:"),
-     sg.Combo(["dev", "prod"], default_value="dev", key="-ENV-", readonly=True, enable_events=True)],
+
+    [sg.Text("当前环境："),
+     sg.Combo(["dev", "prod"], default_value="dev", key="-ENV-", readonly=True, enable_events=True),
+     sg.Push(),
+     sg.Button("", key="-REFRESH-", image_filename=get_resource_path("assets/refresh(17x17).png"), image_size=(17, 17),
+               border_width=1,
+               pad=(0, 0))
+     ],
     # 用户 ID 输入框
-    [sg.Text("请输入用户 ID:", size=(15, 1)),
+    [sg.Text("请输入用户 ID：", size=(15, 1)),
      sg.InputText(key="-USER_ID-", size=(25, 1))],
 
     # 固定账号显示
     [sg.Text("默认转移账号为：", size=(15, 1)),
      sg.Input(default_text="wzptestuser30@fotor.com",
-              disabled=True, key="-FIXED_UID-", size=(25, 1), text_color='grey')],
+              disabled=True, key="-FIXED_UID-", size=(25, 1))],
 
     # 积分数量和充值相关控件
     [sg.Text("请输入积分数量：", size=(15, 1)),

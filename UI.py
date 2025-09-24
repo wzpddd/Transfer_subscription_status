@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-
+from utils.resource_path import get_resource_path
 # UI部分
 
 # 设置主题色为黑色，可修改
@@ -16,7 +16,12 @@ fixed_accounts = {
 layout = [
 
     [sg.Text("当前环境:"),
-     sg.Combo(["dev", "prod"], default_value="dev", key="-ENV-", readonly=True, enable_events=True)],
+     sg.Combo(["dev", "prod"], default_value="dev", key="-ENV-", readonly=True, enable_events=True),
+     sg.Push(),
+     sg.Button("", key="-REFRESH-", image_filename=get_resource_path("assets/refresh(17x17).png"), image_size=(17, 17),
+               border_width=1,
+               pad=(0, 0))
+     ],
     # 用户 ID 输入框
     [sg.Text("请输入用户 ID:", size=(15, 1)),
      sg.InputText(key="user_id", size=(25, 1))],

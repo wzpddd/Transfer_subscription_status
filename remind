@@ -1,2 +1,8 @@
 #打包命令
-pyinstaller --onefile --windowed --clean --name "XXX" UI.py
+pyinstaller --onefile --windowed --clean --name "-目标工具名-" main.py
+pyinstaller --onefile --windowed --clean --add-data "icon.png;." UI.py
+
+打包整个assets资源文件夹
+pyinstaller --onefile --windowed --clean --name "toolsv1.7" --add-data "assets;assets" main.py
+
+pyinstaller --onefile --windowed --clean --name "toolsv1.7" --add-data "assets/refresh(17x17).png;assets" main.py

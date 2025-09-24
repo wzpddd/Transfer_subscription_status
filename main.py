@@ -1,6 +1,5 @@
 from typing import Optional
 import PySimpleGUI as sg
-
 from UI import fixed_accounts
 from services.query.query_account_status import isvip
 from network.login import login_session
@@ -21,10 +20,27 @@ except Exception as e:
     sg.popup_error("❌ 请检查网络", str(e))
     exit(1)
 
+# 二级确认弹窗，且跟随主题窗口，不传值时使用预设文案，当选择yes返回true
+def confirm_action(message: str = "你确定要继续吗？", parent=None, title: str = "确认操作"):
+    location = None
+    if parent is not None:
+        widget = parent.TKroot
+        x = widget.winfo_rootx() + 100
+        y = widget.winfo_rooty() + 100
+        location = (x, y)
+    """
+    二级确认弹窗，跟随主窗口，支持自定义文案和标题
+    """
+    return sg.popup_yes_no(
+        message,
+        title=title,
+        keep_on_top=True,   # 始终置顶
+        modal=True,         # 模态窗口
+        location=location       # 跟随主窗口
+    ) == "Yes"
 
-# 弹窗确认，不传值时使用预设文案，当选择yes返回true
-def confirm_action(message="你确定要继续吗？"):
-    return sg.popup_yes_no(message) == "Yes"
+
+
 
 # 调用工具函数
 def remove_vip(user_id):
@@ -70,18 +86,26 @@ def threaded_task(action, user_id, window,credits_number=None):
             window.write_event_value("-CHANGE_ENV_DONE-", (user_id, session_cookie))
         except Exception as e:
             window.write_event_value("-CHANGE_ENV_DONE-", (user_id, e))
+    elif action == "refresh":
+        try:
+            session_cookie = login_session(user_id)  # 这里 user_id 就是 current_env
+            window.write_event_value("-REFRESH_DONE-", (True, user_id, session_cookie))
+        except Exception as e:
+            window.write_event_value("-REFRESH_DONE-", (False, str(e)))
 
 
 # main
 # 创建窗口
-window = sg.Window("自定义工具集合 🛠", UI.layout)
+window = sg.Window("自定义工具集合 🛠", UI.layout, finalize=True)
+# 能进入窗口就说明登录成功，直接打印文案
+window["result"].update("✅ 后台登录成功！当前环境: dev\n")
 # 事件循环
 while True:
     event, values = window.read()
     if event == sg.WINDOW_CLOSED:
         break
     # 清空屏幕
-    window["result"].update("")
+    # window["result"].update("")
     user_id = values["user_id"].strip()
     credits_number= values["credits_number"].strip()
 
@@ -99,7 +123,7 @@ while True:
 
     # 监听按钮事件名
     elif event == "移除订阅":
-        if confirm_action("确认移除订阅吗？"):
+        if confirm_action("⚠️ 确认移除订阅吗？",parent=window,title="操作确认"):
             # 返回为true时执行
             window["result"].update("⏳ 正在移除订阅...\n")
             threading.Thread(target=threaded_task, args=("remove_vip", user_id, window), daemon=True).start()
@@ -110,7 +134,7 @@ while True:
 
     elif event == "移除积分":
         # 增加二次确认
-        if confirm_action("⚠️ 确认移除积分吗？"):
+        if confirm_action("⚠️ 确认移除积分吗？",parent=window,title="操作确认"):
             # 返回为true时执行
             window["result"].update("⏳ 正在移除积分...\n")
             threading.Thread(target=threaded_task, args=("remove_credits", user_id, window), daemon=True).start()
@@ -121,11 +145,11 @@ while True:
 
     elif event == "充值":
         if not user_id:
-            window["result"].update("⚠️ 请输入用户 ID！\n", append=True)
+            window["result"].update("⚠️ 请输入用户 ID！\n")
             continue
         # 如果没有输入数字就提示
         if not credits_number:
-            window["result"].update("⚠️ 请输入想要充值的积分数量...\n",append=True)
+            window["result"].update("⚠️ 请输入想要充值的积分数量...\n")
             continue
         window["result"].update("⏳ 正在充值积分...\n")
         threading.Thread(target=threaded_task, args=("recharge_credits", user_id,window,credits_number), daemon=True).start()
@@ -139,7 +163,7 @@ while True:
         chosen_env = values["-ENV-"]
 
         if chosen_env == "prod":
-            if not confirm_action("⚠️ 确认切换到正式环境吗？"):
+            if not confirm_action("⚠️ 确认切换到正式环境吗？",parent=window,title="操作确认"):
                 window["-ENV-"].update(current_env)
                 continue
 
@@ -157,7 +181,7 @@ while True:
             session_cookie = result
             # 在成功拿到cookie后才更新当前环境
             current_env = chosen_env
-            window["result"].update(f"✅ 已切换到 {current_env} 环境\n", append=True)
+            window["result"].update(f"✅ 已切换到 {current_env} 环境\n")
             # 刷新默认转移账号文案
             window["fixed_uid"].update(fixed_accounts[current_env])
             # 将输入框内的文案清空
@@ -165,12 +189,29 @@ while True:
             window["credits_number"].update("")
         else:  # 登录失败
             window["-ENV-"].update(current_env)  # 回到原来的环境
-            window["result"].update(f"❌ 切换环境失败: {result}\n", append=True)
+            window["result"].update(f"❌ 切换环境失败: {result}\n")
 
+    # 刷新登录状态
+    elif event == "-REFRESH-":
+        window["result"].update("⏳ 重新登录中......\n")
+        window.refresh()
+        threading.Thread(
+            target=threaded_task,
+            args=("refresh", current_env, window),
+            daemon=True
+        ).start()
 
+    elif event == "-REFRESH_DONE-":
+        success, *data = values[event]
+        if success:
+            current_env, session_cookie = data
+            window["result"].update(f"✅ 登录状态已刷新，当前环境：{current_env}\n")
+        else:
+            error_msg = data[0]
+            window["result"].update(f"❌ 刷新登录状态失败: {error_msg}\n")
 
     elif event in ("-REMOVE_VIP_DONE-", "-QUERY_VIP_DONE-", "-QUERY_CREDITS_DONE-", "-REMOVE_CREDITS_DONE-",
-                   "-RECHARGE_CREDITS_DONE-","-CREATE_SUB_CODE_DONE-","-CHANGE_ENV_DONE-"):
+                   "-RECHARGE_CREDITS_DONE-","-CREATE_SUB_CODE_DONE-","-CHANGE_ENV_DONE-","-REFRESH_DONE-"):
         result = values[event]
 
 
@@ -193,6 +234,6 @@ while True:
             return str(result)
 
     # 在界面上输出更新内容
-        window["result"].update(format_result(result) + "\n", append=True)
+        window["result"].update(format_result(result) + "\n")
         window["result"].Widget.see("end")
 window.close()
